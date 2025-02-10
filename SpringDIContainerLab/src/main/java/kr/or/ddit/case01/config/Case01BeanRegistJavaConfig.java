@@ -25,6 +25,7 @@ import kr.or.ddit.case01.objs.ObjectWithFinalProperty;
  *    - 해당 속성을 생략한 경우, 메소드명이 id로 설정됨.
  */
 
+
 @Configuration
 public class Case01BeanRegistJavaConfig {
 	
