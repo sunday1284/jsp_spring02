@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	"
+	default-lazy-init="true"
+>
+<!-- 	1. 빈 등록 : bean (class, id)  -->
+<!-- 	2. 의존성 주입(constructor, setter) -->
+<!--
+		constructor injection : constructor-arg
+		setter injection : property
+		name 속성 : 주입할 대상이 되는 생성자의 파라미터나 setter 의 파라미터를 지칭함.
+		ref 속성 : 주입 대상이 객체일 때 참조 주소를 통해 주입 대상을 검색(bean id).
+		value 속성 : 주입 대상이 기본형일때 값(literal)을 주입하는 경우.
+		
+		3. 컨테이너의 빈 관리 정책 설정 (bean)
+			scope, lazy-init, init-method, destroy-method
+-->
+<!--
+	<bean class="kr.or.ddit.case05.objs.Case05DummyDAO" id="case05DAO" 
+		lazy-init="true"
+	/>
+	
+	<bean class="kr.or.ddit.case05.objs.Case05DummyService" id="case05Service">
+		생성자 주입방식
+		<constructor-arg name="dao" ref="case05DAO"/>
+		값 자체를 집어넣고 싶을때 value
+		<constructor-arg name="data" value="DATA_VALUE"/>
+	</bean>
+	
+	<bean class="kr.or.ddit.case05.objs.Case05DummyController"
+		 init-method="init" destroy-method="destroy">
+		setter 주입
+		<property name="service" ref="case05Service"/>
+	</bean> -->
+	<context:component-scan base-package="kr.or.ddit.case05.objs"/>
+</beans>

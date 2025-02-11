@@ -10,6 +10,7 @@ class Case04AutoWiringPolicyJavaConfigTest {
 
 	@Test
 	void test() {
+		
 	}
 
 }
