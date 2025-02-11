@@ -7,6 +7,10 @@ import kr.or.ddit.case01.objs.ObjectWithDefaultConstructor;
 import kr.or.ddit.case01.objs.ObjectWithFinalProperty;
 
 /**
+ * Spring Container, Bean Container, DI Container, IoC Container
+ * cf) Servlet Container : 서블릿의 생명주기를 관리하는 객체.
+ * Bean Container : 빈이라는 표현으로 모든 객체의 생명주기를 관리하는 객체.
+ * 
  * 스프링 DI 컨테이너 사용 단계
  * 1. spring-context 의존성 추가 (pom.xml)
  * 2. 컨테이너 내부에서 관리될 객체의 타입(class) 정의 (objs 패키지)
@@ -23,6 +27,8 @@ import kr.or.ddit.case01.objs.ObjectWithFinalProperty;
  * 2. 해당 메소드의 리턴 타입에 @Bean 어노테이션을 추가 
  * 3. 필요시 등록되는 빈의 식별자(id) 를 value 속성을 통해 설정함.
  *    - 해당 속성을 생략한 경우, 메소드명이 id로 설정됨.
+ *    
+ * CoC (Convention over Configuration) 
  */
 
 
@@ -34,6 +40,10 @@ public class Case01BeanRegistJavaConfig {
 		return new ObjectWithDefaultConstructor();
 	}
 	
+	/**
+	 * 팩토리 메서드
+	 * @return
+	 */
 	@Bean("withProperty1")
 	public ObjectWithFinalProperty owfp1() {
 		return new ObjectWithFinalProperty("테스트1");

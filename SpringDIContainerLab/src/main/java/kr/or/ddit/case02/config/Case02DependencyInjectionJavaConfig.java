@@ -14,7 +14,7 @@ import kr.or.ddit.case02.objs.Case02DummyService;
  * 의존관계 형성 : Dependency Injection(의존성 주입)
  * 1. 의존성 주입 방법 설정 
  *  - 생성자 주입(Constructor Injection) : 필수 주입 객체인 경우 주로 활용
- *  - setter 주입(Setter Injection)
+ *  - setter 주입(Setter Injection) : 선택 주입 객체인 경우 주로 활용
  *  2. 설정된 주입 방식에 따라 빈을 주입하는 단계
  *   1) 객체가 등록되고 있는 메소드를 직접 호출할 수 있는 경우.
  *     ex) 생성자 주입 : 생성자의 아규먼트로 주입할 빈이 생성되는 메소드를 직접 호출.
