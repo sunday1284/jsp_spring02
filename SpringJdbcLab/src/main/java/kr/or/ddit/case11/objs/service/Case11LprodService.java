@@ -15,9 +15,11 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 public class Case11LprodService {
 	
+	//mapper를 자동 주입
 	@Autowired
 	private LprodMapper mapper;
 	
+	//service에서 수행해야할 작업들에서 mapper가 가지고 있는 db작업을 처리함
 	public List<LprodVO> readLprodList(){
 		return mapper.selectLprodList();
 	};

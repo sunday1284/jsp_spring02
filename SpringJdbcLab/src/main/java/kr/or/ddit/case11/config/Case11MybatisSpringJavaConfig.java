@@ -24,7 +24,11 @@ import kr.or.ddit.case10.config.Case10JdbcJavaConfig;
 public class Case11MybatisSpringJavaConfig {
 	
 	// SqlSessionFactoryBean과 안에서 생성되는 객체도 등록
+	// 프로젝트 규모가 클 때  mappers에서 디렉토리를 또 나눠야 할 때 
+	//@Value("classpath:kr/or/ddit/mybatis/mappers/**/*.xml") 
+	//Resource... mapperLocations
 	/**
+	 * 
 	 * FactoryBean 의 특성
 	 * FactoryBean 을 bean 으로 등록한 경우,
 	 * 실제 bean으로 등록되는 객체는 getObject 메소드의 반환 객체.
@@ -37,7 +41,9 @@ public class Case11MybatisSpringJavaConfig {
 		DataSource dataSource 
 		, @Value("classpath:kr/or/ddit/mybatis/Configuration.xml") Resource configLocation
 		, @Value("classpath:kr/or/ddit/mybatis/mappers/*.xml") Resource...mapperLocations //가변형 파라미터
-	) {
+		
+
+			) {
 		//SqlSessionFactoryFactoryBean
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		factoryBean.setDataSource(dataSource);
