@@ -41,8 +41,6 @@ public class Case11MybatisSpringJavaConfig {
 		DataSource dataSource 
 		, @Value("classpath:kr/or/ddit/mybatis/Configuration.xml") Resource configLocation
 		, @Value("classpath:kr/or/ddit/mybatis/mappers/*.xml") Resource...mapperLocations //가변형 파라미터
-		
-
 			) {
 		//SqlSessionFactoryFactoryBean
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
@@ -54,6 +52,11 @@ public class Case11MybatisSpringJavaConfig {
 		return factoryBean;
 	}
 	
+	/**
+	 * 자동으로 세션 오픈
+	 * @param sqlSessionFactory
+	 * @return
+	 */
 	@Bean
 	public SqlSessionTemplate sqlSessionTemplate(
 		SqlSessionFactory sqlSessionFactory 
@@ -65,7 +68,7 @@ public class Case11MybatisSpringJavaConfig {
 	public MapperScannerConfigurer mapperScanner() {
 		MapperScannerConfigurer configurar = new MapperScannerConfigurer();
 		configurar.setBasePackage("kr.or.ddit.case11.objs.dao");
-		// Mapper로 끝나는 인터페이스를 자동으로 등록해줌
+		// Mapper로 끝나는 인터페이스를 자동으로 등록해줌 -> proxy 자동 생성
 		configurar.setAnnotationClass(Mapper.class);
 		//sqlSessionFactory의 id값을 넘겨줌
 		configurar.setSqlSessionFactoryBeanName("sqlSessionFactory");

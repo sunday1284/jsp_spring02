@@ -62,6 +62,12 @@
 	    <version>2.1.2</version>
 	</dependency>
 
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.14.0</version>
+		</dependency>
+	
 	
   	<!--logging 지원용 -->
 		<dependency>

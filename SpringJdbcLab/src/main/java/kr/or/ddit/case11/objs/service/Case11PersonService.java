@@ -16,5 +16,8 @@ public class Case11PersonService {
 	@Autowired
 	private final PersonMapper mapper;
 	
-	
+	@PostConstruct
+	public void init() {
+		log.info("주입된 mapper : {}", mapper);
+	}
 }

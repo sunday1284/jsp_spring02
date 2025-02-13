@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dummy">
+	<!-- strict alias -> 카멜케이스가 전부 대문자로 바뀌는걸 막아줌 -->
+	<select id="selectDummy" resultType="hashMap">
+		SELECT SYSDATE "sysdateAlias"
+		FROM DUAL
+	</select>
+</mapper>
