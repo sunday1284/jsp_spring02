@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 <table>
 	<thead>
 		<tr>
@@ -15,7 +8,7 @@
 			<th>분류명</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody id="listBody">
 		<c:choose>
 			<c:when test="${not empty lprodList}">
 				<c:forEach items="${lprodList}" var="lprod">
@@ -28,7 +21,6 @@
 					</tr>		
 				</c:forEach>
 			</c:when> 	
-
 			<c:otherwise>
 				<tr>
 					<td colspan="2">분류 x</td>
@@ -37,5 +29,9 @@
 		</c:choose>
 	</tbody>
 </table>
-</body>
-</html>
+<table id="detail-table">
+
+
+</table>
+
+<script src="<c:url value='/resources/js/prod/lprodList.js'/>"></script>

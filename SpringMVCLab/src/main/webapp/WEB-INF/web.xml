@@ -6,20 +6,37 @@
 	<display-name>SpringMVCLab</display-name>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
+		<!-- 상위 컨테이너 생성 -->
+	<!-- 	스프링 DI 컨테이너 구현체의 종류 -->
 	</welcome-file-list>
 	<context-param>
 		<param-name>contextClass</param-name>
 		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
 	</context-param>
+	<!-- 	spring java config file location -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>kr.or.ddit.spring.config.RootContextJavaConfig</param-value>
 	</context-param>
-	
+	<!-- 	서버가 구동되면, Root WebApplicationContext(Spring 컨테이너)를 생성함. -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
+	<!--응답 데이터에 관한 UTF-8 인코딩 작업  -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!--컨트롤러와 뷰를 관리할 수 있는 하위 컨테이너 생성(servlet) 설정-->
 	<servlet>
 		<servlet-name>DispatcherServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -27,6 +44,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring/dispather-servlet.xml</param-value>
 		</init-param>
+		<!-- 서블릿 객체 미리 생성 -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<!--동적 자원만 /* , 정적자원 포함 /  -->

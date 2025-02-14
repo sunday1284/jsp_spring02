@@ -1,6 +1,5 @@
 package kr.or.ddit.case01.controller;
 
-import javax.servlet.annotation.WebServlet;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -25,34 +24,41 @@ public class RegistControllerBean {
 	//header가 있으면 body가 있으므로 post, consumes(content-type 제한) produces(accept헤더)
 	//MediaType -> content-type 타입 설정 가능
 	@PostMapping(value="request05",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void handler06(){
+	public String handler06(){
 		log.info("/case01/request05 content-type(json) 수신");
+		return "case01/view01";
 	}
 	@RequestMapping(value="request05",method = RequestMethod.POST)
-	public void handler07(){
+	public String handler07(){
 		log.info("/case01/request05 content-type(*) 수신");
+		return "case01/view01";
 	}
 	@RequestMapping(value="request04",produces = "text/html")
-	public void handler05(){
+	public String handler05(){
 		log.info("/case01/request04 accept(html) 수신");
+		return "case01/view01";
 	}
 	@RequestMapping(value="request04",produces = "application/json")
-	public void handler04(){
+	public String handler04(){
 		log.info("/case01/request04 accept(json) 수신");
+		return "case01/view01";
 	}
 	@RequestMapping(value="request03", params = "what")
-	public void handler03(){
+	public String handler03(){
 		log.info("/case01/request03  수신");
+		return "case01/view01";
 	}
 	
 	@RequestMapping(value="request02", 
 			method = { RequestMethod.GET, RequestMethod.POST })
-	public void handler02(){
+	public String handler02(){
 		log.info("/case01/request02 (GET, POST) 수신");
+		return "case01/view01";
 	}
 	
 	@RequestMapping("request01")
-	public void handler01() {
+	public String handler01() {
 		log.info("/case01/request01 수신");
+		return "case01/view01";
 	}
 }

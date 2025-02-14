@@ -114,6 +114,13 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+		<!--java8에서 추가된 java.time 패키지에 대한 마샬링 지원-->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.datatype</groupId>
+		    <artifactId>jackson-datatype-jsr310</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+
 		
 		<!--javaBean 규약 지원용-->
 			<dependency>

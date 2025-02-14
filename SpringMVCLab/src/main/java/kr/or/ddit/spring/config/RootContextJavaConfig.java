@@ -23,7 +23,7 @@ import org.springframework.transaction.TransactionManager;
  * 설정파일에서는 Model -> dao, service만 등록하기 위한 controller 배제 작업
  */
 @Configuration
-
+// 상위 컨테이너 생성 
 @ComponentScan(basePackages = "kr.or.ddit"
 	, excludeFilters = {
 		@ComponentScan.Filter(classes = Controller.class)
