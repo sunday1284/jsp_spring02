@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 
 <table>
-<c:set value="${lprod.prodList }" var="prodList"/>
-<c:if test="${not empty  prodList}">
 	<tr>
 		<th>분류명</th>
 		<td>${lprod.lprodNm }</td>
 	</tr>
+		<c:set value="${lprod.prodList }" var="prodList"/>
+		<c:if test="${not empty  prodList}">
 	<tr>
 		<th>상품목록</th>
 		<td>
