@@ -13,7 +13,7 @@
 <h4>공통 타이틀</h4>
 
 <main>
-	<tiles:insertAttribute name="content"/>
+	<tiles:insertAttribute name="content" ignore="true"/>
 </main>
 
 
