@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd" >
+<tiles-definitions>
+  <definition name="parent" template="/WEB-INF/layouts/template.jsp">
+  	<put-attribute name="preScript" value="/WEB-INF/includee/preScript.jsp" />
+  	<put-attribute name="postScript" value="/WEB-INF/includee/postScript.jsp" />
+  	
+  	
+  </definition>
+	<!--   tiles:만 을 모듈화 -->
+  <definition name="tiles:*/*/*" extends="parent">
+  	<put-attribute name="content" value="/WEB-INF/jsp/{1}/{2}/{3}.jsp"/>
+  </definition>
+  <definition name="tiles:*/*" extends="parent">
+  	<put-attribute name="content" value="/WEB-INF/jsp/{1}/{2}.jsp"/>
+  </definition>
+  <definition name="tiles:*" extends="parent">
+  	<put-attribute name="content" value="/WEB-INF/jsp/{1}.jsp"/>
+  </definition>
+</tiles-definitions>

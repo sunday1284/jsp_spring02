@@ -6,10 +6,11 @@ document.addEventListener("DOMContentLoaded",function(){
         e.preventDefault();
         // 2. 비동기 요청 전송(dataType : json)
         let url = this.href;
-
+		//type, data, dataType, url을 불러올 수 있음 
         $.ajax({
             url:url,
             dataType:"json",
+			// 3. success 함수에서 응답 수신
             success:function({lprod}){
                 let html = `
                 <tr>
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded",function(){
                             </thead>
                             <tbody>
                     `;
+					//jsp -> foreach 
                     $.each(prodList, function(i, prod){
                         html += `
                         <tr>
@@ -52,7 +54,7 @@ document.addEventListener("DOMContentLoaded",function(){
                 console.log(arguments);
             }
         })
-        // 3. success 함수에서 응답 수신
+        
 
     });
 });

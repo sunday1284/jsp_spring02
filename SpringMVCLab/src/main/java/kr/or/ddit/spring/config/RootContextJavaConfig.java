@@ -1,4 +1,4 @@
-package kr.or.ddit.spring.config;
+  package kr.or.ddit.spring.config;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
