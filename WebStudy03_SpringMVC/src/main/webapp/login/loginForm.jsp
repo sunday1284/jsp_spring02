@@ -39,9 +39,9 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   <!-- flash attribute 방식 jstl 사용 -->
-	<c:if test="${not empty sessionScope.message }">
+	<c:if test="${not empty message }">
 		<script type="text/javascript">
-			alert("${sessionScope.message}");
+			alert("${message}");
 		</script>
 		<c:remove var="message" scope="session"/>
 	</c:if>

@@ -43,9 +43,9 @@ public class LogingProcessController {
             
             logical = "redirect:/"; // 인증 성공 시 메인 페이지로
         } catch (AuthenticateException e) {
-            redirectAttributes.addFlashAttribute("message", e.getMessage());
+            session.setAttribute("message", e.getMessage());
             
-            logical = "redirect:/login/loginForm"; // 인증 실패 시 로그인 페이지로
+            logical = "redirect:/login/loginForm.jsp"; // 인증 실패 시 로그인 페이지로
         }
         return logical;
 	}

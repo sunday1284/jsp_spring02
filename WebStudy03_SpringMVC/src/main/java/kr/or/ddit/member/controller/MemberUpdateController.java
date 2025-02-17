@@ -7,13 +7,16 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.ddit.auth.exception.AuthenticateException;
 import kr.or.ddit.member.service.MemberService;
@@ -57,53 +60,48 @@ public class MemberUpdateController{
 	@PostMapping("/member/memberUpdate.do")
 	public String PostMemUpdate(
 		HttpSession session
-		, Model model
-		, HttpServletRequest req
+		,@Valid MemberVO member
+		, BindingResult result
+		, RedirectAttributes redirectAttributes
 	)
 	{
 		//memberinsert랑 비슷함 
 		MemberVO authMember = (MemberVO) session.getAttribute("authMember");
-		MemberVO member = new MemberVO();
 		member.setMemId(authMember.getMemId());
 		//2. 파라미터 설정 -> beanutils로 다 가져옴
-		try {
-			BeanUtils.populate(member, req.getParameterMap());
-		} catch (IllegalAccessException | InvocationTargetException e) {
-			throw new RuntimeException(e);
-		}
-		//3. 서비스에서 값 받아옴 -> logicalName 설정
-		//에러를 해쉬맵으로 셋팅함
-		Map<String, String> errors = new HashMap<>();
-		validate(member, errors);
-		//에러가 비어 있으면 valid , 비어있지 않으면 !valid
-		boolean valid = errors.isEmpty();
-		
-		//4. 수정 성공 실패 여부 확인
-		session.setAttribute("member", member);
-		session.setAttribute("errors", errors);
-		
 		String logicalName = null;
-		if(valid) {
-			try {
-				//수정 성공 
-				service.modifyMember(member);
-				//완료 후 삭제
-				session.removeAttribute("member");
-				session.removeAttribute("errors");
-				
-				// 기존 인증 객체 변경 
-				session.setAttribute("authMember", service.readMember(member.getMemId()));
-				logicalName = "redirect:/mypage";
-				
-			} catch(AuthenticateException e) {
-				session.setAttribute("message", "비밀번호 오류");
-				logicalName = "redirect:/member/memberUpdate.do";
-			}
-		} else {
+		if(result.hasErrors()) {
+			redirectAttributes.addFlashAttribute("errors",result.getFieldError());
+			redirectAttributes.addFlashAttribute("member",member);
 			//수정 실패시 다시 원래 폼 화면
 			logicalName = "redirect:/member/memberUpdate.do";
 		}
 		
+		
+		//3. 서비스에서 값 받아옴 -> logicalName 설정
+		//에러를 해쉬맵으로 셋팅함
+//		Map<String, String> errors = new HashMap<>();
+//		validate(member, errors);
+//		//에러가 비어 있으면 valid , 비어있지 않으면 !valid
+//		boolean valid = errors.isEmpty();
+		
+		//4. 수정 성공 실패 여부 확인
+		try {
+			//수정 성공 
+			service.modifyMember(member);
+			//완료 후 삭제
+			session.removeAttribute("member");
+			session.removeAttribute("errors");
+			
+			// 기존 인증 객체 변경 
+			session.setAttribute("authMember", service.readMember(member.getMemId()));
+			logicalName = "redirect:/mypage";
+			
+		} catch(AuthenticateException e) {
+			session.setAttribute("message", "비밀번호 오류");
+			logicalName = "redirect:/member/memberUpdate.do";
+		}
+	
 		
 		return logicalName;
 	}

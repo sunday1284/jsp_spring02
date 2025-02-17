@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -49,40 +51,46 @@ public class MemberInsertController {
 	@PostMapping("/member/memberInsert.do")
 	public String PostMemInsert(
 		HttpSession session
+		, @Valid MemberVO member
+		, BindingResult result
 		, HttpServletRequest req
 		, RedirectAttributes redirectAttributes
 		,Model model
 	){
-		MemberVO member = new MemberVO();
+//		member = new MemberVO();
 		session.setAttribute("member", member);
 		
-		try {
-			BeanUtils.populate(member, req.getParameterMap());
-		} catch (IllegalAccessException | InvocationTargetException e) {
-			throw new RuntimeException(e);
-		}
+//		try {
+//			BeanUtils.populate(member, req.getParameterMap());
+//		} catch (IllegalAccessException | InvocationTargetException e) {
+//			throw new RuntimeException(e);
+//		}
 		
 
 		String logicalName = null;
+		
+		
 //		3. 요청 검증 
-		Map<String, String> errors = new HashMap<>();
-		redirectAttributes.addFlashAttribute("errors", errors);
-		validate(member, errors);
-		boolean valid = errors.isEmpty();
-		if (valid) {
-//		2) 검증 통과 
-//			a) 등록(createMember) 처리
-			service.createMember(member);
-//			b) 등록 성공 : 웰컴 페이지로 이동(redirect)
-			logicalName = "redirect:/";
-			session.removeAttribute("member");
-			session.removeAttribute("errors");
-		} else {
-//		1) 검증 실패
+		if(result.hasErrors()) {
+//			1) 검증 실패
 //			: 가입 양식으로 다시 이동(기존 입력 데이터 검증 결과 메시지를 전달).
 //				dispatch -> redirect
+			redirectAttributes.addFlashAttribute("errors", result.getFieldError());
+			redirectAttributes.addFlashAttribute("member",member);
 			logicalName = "redirect:/member/memberInsert.do";
 		}
+//		Map<String, String> errors = new HashMap<>();
+//		validate(member, errors);
+//		boolean valid = errors.isEmpty();
+//		2) 검증 통과 
+//			a) 등록(createMember) 처리
+		service.createMember(member);
+//			b) 등록 성공 : 웰컴 페이지로 이동(redirect)
+		session.removeAttribute("member");
+		session.removeAttribute("errors");
+
+		logicalName = "redirect:/";
+			
 		
 		return logicalName;
 	}
