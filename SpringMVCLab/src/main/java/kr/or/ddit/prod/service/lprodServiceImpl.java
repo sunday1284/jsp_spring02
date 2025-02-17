@@ -29,4 +29,14 @@ public class lprodServiceImpl implements LprodService{
 		return dao.selectLprod(lprodGu);
 	}
 
+	@Override
+	public void createLprod(LprodVO lprod) {
+		dao.insertLprod(lprod);
+	}
+
+	@Override
+	public void modifyLprod(LprodVO lprod) {
+		dao.updateLprod(lprod);
+	}
+	
 }

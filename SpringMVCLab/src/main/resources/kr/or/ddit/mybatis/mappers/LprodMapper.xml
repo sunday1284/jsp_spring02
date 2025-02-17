@@ -11,8 +11,11 @@
 		</collection>
 	</resultMap>
 	
+	
+	
+	
 	<select id="selectLprod" resultMap="lprodMap">
-		SELECT LP.LPROD_GU, LPROD_NM
+		SELECT LP.LPROD_GU, LPROD_NM, LPROD_ID
 			, PROD_ID, PROD_NAME, PROD_COST
 		FROM LPROD LP LEFT OUTER JOIN PROD P
 			ON (LP.LPROD_GU = P.LPROD_GU)
@@ -26,5 +29,40 @@
 		FROM LPROD L LEFT OUTER JOIN BUYER B
 		    ON (L.LPROD_GU = B.LPROD_GU)
 	</select>
-
+	<insert id="insertLprod">
+		<!--insert 되기전 setter 호출   -->
+		<selectKey order="BEFORE" keyProperty="lprodId" resultType="long">
+			SELECT NVL(MAX(LPROD_ID), 0) + 1
+			FROM LPROD
+		</selectKey>
+		INSERT INTO LPROD 
+		(
+		    LPROD_ID
+		   , LPROD_GU
+		   , LPROD_NM
+		) VALUES (
+		    #{lprodId,jdbcType=NUMERIC}
+		    , #{lprodGu,jdbcType=VARCHAR}
+		    , #{lprodNm,jdbcType=VARCHAR}
+		)
+	
+	</insert>
+	
+	<!--fetch 방식 수정방식  -->
+	<update id="updateLprod">
+		UPDATE LPROD
+		<!-- 앞에 잘못들어간 , 삭제 -->
+		<trim prefix="SET" prefixOverrides=",">
+			<if test="lprodId neq null">
+			, LPROD_ID = #{lprodId, jdbcType=NUMERIC}
+			</if>
+			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(lprodNm)">
+	        , LPROD_NM = #{lprodNm,jdbcType=VARCHAR}
+	        </if>
+		</trim>
+		WHERE
+    		LPROD_GU = #{lprodGu}
+	</update>
+	
+	
 </mapper>

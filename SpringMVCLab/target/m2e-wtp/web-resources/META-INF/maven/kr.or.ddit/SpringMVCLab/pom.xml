@@ -128,7 +128,12 @@
 			    <artifactId>lombok</artifactId>
 			    <version>1.18.36</version>
 			</dependency>
-
+		<!--Domain model 기반의 검증 프레임워크(Bean validation)-->
+		<dependency>
+		    <groupId>org.hibernate.validator</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>6.2.5.Final</version>
+		</dependency>
 		
 		<!--commos 계열-->
 		<dependency>

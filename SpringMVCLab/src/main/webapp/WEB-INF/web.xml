@@ -47,7 +47,7 @@
 		<!-- 서블릿 객체 미리 생성 -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	<!--동적 자원만 /* , 정적자원 포함 /  -->
+	<!--동적 자원만 /* , 정적자원 포함 / front controller Servlet -->
 	<servlet-mapping>
 		<servlet-name>DispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
