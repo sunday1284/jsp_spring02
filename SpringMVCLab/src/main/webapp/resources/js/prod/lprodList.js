@@ -15,7 +15,10 @@ document.addEventListener("DOMContentLoaded",function(){
                 let html = `
                 <tr>
                     <th>분류명</th>
-                    <td>${lprod.lprodNm }</td>
+                    <td>
+					${lprod.lprodNm }
+					<a href="lprodUpdate.do?what=${lprod.lprodGu}">수정 </a>
+					</td>
                 </tr>
                 `;
                 let prodList = lprod.prodList;

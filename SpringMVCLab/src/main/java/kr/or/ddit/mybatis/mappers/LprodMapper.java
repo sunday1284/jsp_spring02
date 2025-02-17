@@ -11,4 +11,8 @@ public interface LprodMapper {
 	public LprodVO selectLprod(String lprodGu);
 	
 	public List<LprodVO> selectLprodList();
+	
+	public int insertLprod(LprodVO lprod);
+	
+	public int updateLprod(LprodVO lprod);
 }
