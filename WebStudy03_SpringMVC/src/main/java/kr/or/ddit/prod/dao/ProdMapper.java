@@ -2,11 +2,13 @@ package kr.or.ddit.prod.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import kr.or.ddit.paging.PaginationInfo;
 import kr.or.ddit.prod.vo.ProdVO;
 
+@Mapper
 public interface ProdMapper {
 	/**
 	 * 페이징 처리를 위한 전체 레코드수 조회

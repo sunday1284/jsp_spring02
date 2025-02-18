@@ -53,6 +53,6 @@
 		</mvc:content-negotiation>
 	<!--디테일한 설정이 먼저 들어감, mvc:jsp설정은 맨 마지막에 -->
 		<mvc:tiles/>
-		<mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp"/>
+		<mvc:jsp prefix="/WEB-INF/views/" suffix=".jsp"/>
 	</mvc:view-resolvers>
 </beans>

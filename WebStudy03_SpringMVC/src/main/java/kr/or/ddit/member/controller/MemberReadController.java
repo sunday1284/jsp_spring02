@@ -1,40 +1,32 @@
 package kr.or.ddit.member.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.ddit.member.service.MemberService;
-import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.member.vo.MemberVO;
 import kr.or.ddit.paging.DefaultPaginationRenderer;
 import kr.or.ddit.paging.PaginationInfo;
 import kr.or.ddit.paging.PaginationRenderer;
 import kr.or.ddit.paging.SimpleCondition;
-import kr.or.ddit.prod.vo.ProdVO;
 
 @Controller
-public class MemberListController{
+@RequestMapping("/member")
+public class MemberReadController{
 	
 	@Inject
 	private MemberService service;
 	
 	
-	@GetMapping("/member/memberList.do")
+	@GetMapping("memberList.do")
 	public String memberList(
 		@RequestParam(name = "page", required = false, defaultValue = "1") int currentPage
 		, @ModelAttribute("condition") SimpleCondition condition
@@ -45,9 +37,6 @@ public class MemberListController{
 		//startRow, endRow 결정을 위한 셋팅 
 		paging.setCurrentPage(currentPage);
 		paging.setSimpleCondition(condition);
-		
-		
-		
 		
 		List<MemberVO> memberList = service.readMemberList(paging);
 		//scope 저장
@@ -62,6 +51,23 @@ public class MemberListController{
 //		tiles
 		return "tiles:member/memberList";
 		
+		
+	}
+	
+	@GetMapping("memberDetail.do")
+	public String MemberDetail(
+		@RequestParam("who") String memId
+		,Model model
+	) {
+
+//		4. model 확보(logic 사용 - readMember) 
+		MemberVO member = service.readMember(memId);
+//		5. scope 에 저장 : member (attribute name)
+		model.addAttribute("member", member);
+		
+//		6. view layer 선택(/WEB-INF/views/member/memberDetail.jsp)
+		//단일 jsp 응답
+		return "member/memberDetail";
 		
 	}
 }

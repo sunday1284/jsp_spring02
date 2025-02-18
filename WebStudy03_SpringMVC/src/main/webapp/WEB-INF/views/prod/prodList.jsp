@@ -77,5 +77,108 @@
 	<input type="text" name="buyerId" value="${condition.buyerId }"/>
 	<input type="text" name="prodName" value="${condition.prodName }"/>
 </form>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+  	<table class="table table-bordered">
+		<tr>
+			<td colspan="2" data-update='<c:url value='/prod/prodUpdate.do'/>'>
+				<!-- go -> index 값으로 가고싶은 경로 지정 -->
+				
+			</td>
+		</tr>
+		<tr>
+			<th>상품코드</th>
+			<td data-name="prodId"></td>
+		</tr>
+		<tr>
+			<th>상품명</th>
+			<td data-name="prodName"></td>
+		</tr>
+		<tr>
+			<th>분류코드</th>
+			<td data-name="lprodGu"></td>
+		</tr>
+		<tr>
+			<th>제조사코드</th>
+			<td data-name="buyerId"></td>
+		</tr>
+		<tr>
+			<th>구매가</th>
+			<td data-name="prodCost"></td>
+		</tr>
+		<tr>
+			<th>판매가</th>
+			<td data-name="prodPrice"></td>
+		</tr>
+		<tr>
+			<th>세일가</th>
+			<td data-name="prodSale"></td>
+		</tr>
+		<tr>
+			<th>요약정보</th>
+			<td data-name="prodOutline"></td>
+		</tr>
+		<tr>
+			<th>상세정보</th>
+			<td data-name="prodDetail"></td>
+		</tr>
+		<tr>
+			<th>이미지</th>
+			<td data-img="<c:url value='/resources/prodImages'/>">
+				
+			</td>
+		</tr>
+		<tr>
+			<th>총재고</th>
+			<td data-name="prodTotalstock"></td>
+		</tr>
+		<tr>
+			<th>입고일</th>
+			<td data-name="prodInsdate"></td>
+		</tr>
+		<tr>
+			<th>적정재고</th>
+			<td data-name="prodProperstock"></td>
+		</tr>
+		<tr>
+			<th>크기</th>
+			<td data-name="prodSize"></td>
+		</tr>
+		<tr>
+			<th>색상</th>
+			<td data-name="prodColor"></td>
+		</tr>
+		<tr>
+			<th>배송방법</th>
+			<td data-name="prodDelivery"></td>
+		</tr>
+		<tr>
+			<th>단위</th>
+			<td data-name="prodUnit"></td>
+		</tr>
+		<tr>
+			<th>입고량</th>
+			<td data-name="prodQtyin"></td>
+		</tr>
+		<tr>
+			<th>출고량</th>
+			<td data-name="prodQtysale"></td>
+		</tr>
+		<tr>
+			<th>마일리지</th>
+			<td data-name="prodMileage"></td>
+		</tr>
+	
+	
+	</table>
+  </div>
+</div>
+
+
 <script src="${pageContext.request.contextPath }/resources/js/prod/prodList.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/common/paging.js"></script>

@@ -2,15 +2,21 @@ package kr.or.ddit.prod.service;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+
 import kr.or.ddit.paging.PaginationInfo;
 import kr.or.ddit.prod.dao.ProdMapper;
-import kr.or.ddit.prod.dao.ProdMapperImpl;
 import kr.or.ddit.prod.exception.ProdNotExistException;
 import kr.or.ddit.prod.vo.ProdVO;
+import lombok.RequiredArgsConstructor;
 
+@Service
+@RequiredArgsConstructor
 public class ProdServiceImpl implements ProdService {
-
-	private ProdMapper dao = new ProdMapperImpl();
+	
+	private final ProdMapper dao;
 	@Override
 	public List<ProdVO> readProdList(PaginationInfo<ProdVO> paging) {
 		int totalRecord = dao.selectTotalRecord(paging);

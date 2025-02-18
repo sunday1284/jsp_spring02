@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.ddit.auth.exception.AuthenticateException;
 import kr.or.ddit.member.service.MemberService;
@@ -29,23 +30,17 @@ public class MemberDeleteController{
 	
 	@PostMapping("/member/memberDelete.do")
 	public String MemDelete(
-		HttpSession session
-		,Model model
+		@SessionAttribute("authMember") MemberVO authMember
 		,@RequestParam("password") String password
+		, HttpSession session
+		, RedirectAttributes redirectAttributes
 			
 	){
-		// 1. 세션에서 authMember 확보
-        MemberVO authMember = (MemberVO) session.getAttribute("authMember");
-        if (authMember == null) {
-            session.setAttribute("message", "세션이 만료되었습니다. 다시 로그인해주세요.");
-            return "redirect:/login/loginForm";
-        }
-		
-		
 		//1. authMember확보
 		MemberVO inputData = new MemberVO();
 		inputData.setMemId(authMember.getMemId());
 		inputData.setMemPass(password);
+		
 		String logicalName = null;
 		//2. 성공시 웰컴 , 실패시 mypage로 이동
 		try {
@@ -53,7 +48,7 @@ public class MemberDeleteController{
 			session.invalidate(); //탈퇴하면 세션 정보를 다 삭제해야함 -> 로그아웃
 			logicalName = "redirect:/";	
 		}catch(AuthenticateException e){
-			session.setAttribute("message", "비밀번호 오류");
+			redirectAttributes.addFlashAttribute("message", "비밀번호 오류");
 			logicalName = "redirect:/mypage";
 		}
 		

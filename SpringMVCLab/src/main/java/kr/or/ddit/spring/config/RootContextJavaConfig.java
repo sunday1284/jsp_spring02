@@ -33,6 +33,14 @@ import org.springframework.transaction.TransactionManager;
 public class RootContextJavaConfig {
 	
 	@Bean
+	public PropertiesFactoryBean fileInfo(
+		@Value("classpath:kr/or/ddit/FileInfo.properties") Resource location 
+	) {
+		PropertiesFactoryBean factory = new PropertiesFactoryBean();
+		factory.setLocation(location);
+		return factory;
+	}
+	@Bean
 	public PropertiesFactoryBean dbInfo(
 		@Value("classpath:kr/or/ddit/db/DBInfo.properties") Resource location 
 	) {

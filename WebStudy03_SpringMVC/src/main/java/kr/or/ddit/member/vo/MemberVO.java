@@ -2,10 +2,14 @@ package kr.or.ddit.member.vo;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 
+import kr.or.ddit.validate.InsertGroup;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,25 +27,30 @@ import lombok.ToString;
 public class MemberVO implements Serializable{
 	//일련번호 
 	private int rnum;
-	@NotNull(groups = Default.class)
+	
+	@NotBlank(groups = InsertGroup.class)
 	private String memId;
-	@NotNull(groups = Default.class)
+	@NotBlank
+	@Size(min= 4, max= 12)
 	private transient String memPass;
-	@NotNull(groups = Default.class)
+	@NotBlank(groups = InsertGroup.class)
 	private String memName;
+	@Size(min = 6, max = 6, groups = InsertGroup.class)
 	private transient String memRegno1;
+	@Size(min = 7, max = 7, groups = InsertGroup.class)
 	private transient String memRegno2;
 	private String memBir;
-	@NotNull(groups = Default.class)
+	@NotBlank
 	private String memZip;
-	@NotNull(groups = Default.class)
+	@NotBlank
 	private String memAdd1;
-	@NotNull(groups = Default.class)
+	@NotBlank
 	private String memAdd2;
 	private String memHometel;
 	private String memComtel;
-	@NotNull(groups = Default.class)
+	@NotBlank
 	private String memHp;
+	@Email
 	private String memMail;
 	private String memJob;
 	private String memLike;

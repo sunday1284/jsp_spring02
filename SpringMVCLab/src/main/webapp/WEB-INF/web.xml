@@ -36,6 +36,16 @@
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<filter>
+		<filter-name>MultipartFilter</filter-name>
+		<filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>MultipartFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<!--컨트롤러와 뷰를 관리할 수 있는 하위 컨테이너 생성(servlet) 설정-->
 	<servlet>
 		<servlet-name>DispatcherServlet</servlet-name>
@@ -46,6 +56,7 @@
 		</init-param>
 		<!-- 서블릿 객체 미리 생성 -->
 		<load-on-startup>1</load-on-startup>
+		<multipart-config></multipart-config>
 	</servlet>
 	<!--동적 자원만 /* , 정적자원 포함 / front controller Servlet -->
 	<servlet-mapping>

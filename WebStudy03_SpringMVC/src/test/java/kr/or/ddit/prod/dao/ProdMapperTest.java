@@ -2,18 +2,24 @@ package kr.or.ddit.prod.dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 import java.util.List;
+
+import javax.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 
+import kr.or.ddit.CustomRootContextConfig;
 import kr.or.ddit.member.vo.MemberVO;
 import kr.or.ddit.paging.PaginationInfo;
 import kr.or.ddit.prod.vo.ProdVO;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
+@CustomRootContextConfig
 class ProdMapperTest {
 	
-	ProdMapper dao = new ProdMapperImpl();
+	@Inject
+	ProdMapper dao;
 	
 	@Test
 	void testSelectProdList() {

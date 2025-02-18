@@ -130,17 +130,3 @@
       </div>
     </div>
 </form>
-
-<script type="text/javascript">
-   document.addEventListener("DOMContentLoaded", ()=>{
-      const $buyerId = $('[name="buyerId"]');
-      $('[name="lprodGu"]').on("change",function(){
-         // 'P101'
-         let selectedLprod = $(this).val();
-         $buyerId.find("option").hide();
-         $buyerId.find("option:first").show();
-         // 'P101' , 'P10101', 'P10102'
-         $buyerId.find(`option[value^=\${selectedLprod}]`).show();
-      })
-   })
-</script>

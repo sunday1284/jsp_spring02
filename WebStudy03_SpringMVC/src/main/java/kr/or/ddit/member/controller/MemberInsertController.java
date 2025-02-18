@@ -1,123 +1,72 @@
 package kr.or.ddit.member.controller;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.management.RuntimeErrorException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.ddit.member.service.MemberService;
-import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.member.vo.MemberVO;
+import kr.or.ddit.validate.InsertGroup;
 
 @Controller
+@RequestMapping("/member/memberInsert.do")
 public class MemberInsertController {
 	@Inject
 	private MemberService service;
-
-	@GetMapping("/member/memberInsert.do")
-	 public String GetMemInsert(
-		 HttpSession session
-		 ,Model model
-	){
-		model.addAttribute("member", session.getAttribute("member")); 
-		model.addAttribute("errors", session.getAttribute("errors")); 
-		//세션 삭제 -> flash attribute 방식
-		session.removeAttribute("member");
-		session.removeAttribute("errors");
+	// 모델 네임 상수로 선언
+	public static final String MODELNAME = "member";
+	
+	@GetMapping
+	 public String FormUI(Model model){
 		
 		return "tiles:member/memberForm";
 
 	}
 
-	@PostMapping("/member/memberInsert.do")
+	@PostMapping
 	public String PostMemInsert(
-		HttpSession session
-		, @Valid MemberVO member
-		, BindingResult result
-		, HttpServletRequest req
-		, RedirectAttributes redirectAttributes
-		,Model model
-	){
-//		member = new MemberVO();
-		session.setAttribute("member", member);
+		 @Validated(InsertGroup.class) @ModelAttribute(MODELNAME) MemberVO member
+		, BindingResult errors
+		 , RedirectAttributes redirectAttributes
 		
-//		try {
-//			BeanUtils.populate(member, req.getParameterMap());
-//		} catch (IllegalAccessException | InvocationTargetException e) {
-//			throw new RuntimeException(e);
-//		}
-		
-
+	){		
 		String logicalName = null;
 		
 		
 //		3. 요청 검증 
-		if(result.hasErrors()) {
+		if(!errors.hasErrors()) {
+//		2) 검증 통과 
+//			a) 등록(createMember) 처리
+			service.createMember(member);
+			
+//			b) 등록 성공 : 웰컴 페이지로 이동(redirect)
+			logicalName = "redirect:/";
+		}else {
 //			1) 검증 실패
 //			: 가입 양식으로 다시 이동(기존 입력 데이터 검증 결과 메시지를 전달).
 //				dispatch -> redirect
-			redirectAttributes.addFlashAttribute("errors", result.getFieldError());
-			redirectAttributes.addFlashAttribute("member",member);
+			redirectAttributes.addFlashAttribute(MODELNAME,member);
+			String errorName = BindingResult.MODEL_KEY_PREFIX + MODELNAME;
+			redirectAttributes.addFlashAttribute(errorName,errors);
 			logicalName = "redirect:/member/memberInsert.do";
-		}
-//		Map<String, String> errors = new HashMap<>();
-//		validate(member, errors);
-//		boolean valid = errors.isEmpty();
-//		2) 검증 통과 
-//			a) 등록(createMember) 처리
-		service.createMember(member);
-//			b) 등록 성공 : 웰컴 페이지로 이동(redirect)
-		session.removeAttribute("member");
-		session.removeAttribute("errors");
-
-		logicalName = "redirect:/";
-			
+		}	
 		
 		return logicalName;
 	}
 
-	// Call by Reference 구조
-	private void validate(MemberVO member, Map<String, String> errors) {
-		if (StringUtils.isBlank(member.getMemId())) {
-			errors.put("memId", "회원아이디 누락");
-		}
-		if (StringUtils.isBlank(member.getMemPass())) {
-			errors.put("memPass", "비밀번호 누락");
-		}
-		if (StringUtils.isBlank(member.getMemName())) {
-			errors.put("memName", "회원명 누락");
-		}
-		if (StringUtils.isBlank(member.getMemZip())) {
-			errors.put("memZip", "우편번호 누락");
-		}
-		if (StringUtils.isBlank(member.getMemAdd1())) {
-			errors.put("memAdd1", "주소1 누락");
-		}
-		if (StringUtils.isBlank(member.getMemAdd2())) {
-			errors.put("memAdd2", "주소2 누락");
-		}
-		if (StringUtils.isBlank(member.getMemHp())) {
-			errors.put("memHp", "휴대폰 누락");
-		}
 
-	}
 }

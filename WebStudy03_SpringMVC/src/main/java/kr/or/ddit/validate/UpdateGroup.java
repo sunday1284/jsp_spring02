@@ -1,4 +1,4 @@
-package kr.or.ddit.member.validate;
+package kr.or.ddit.validate;
 
 import javax.validation.groups.Default;
 
