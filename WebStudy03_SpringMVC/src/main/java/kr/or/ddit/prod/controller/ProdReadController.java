@@ -66,7 +66,7 @@ public class ProdReadController{
 	   @RequestParam("what") String prodId
 	   , Model model
 	){		
-		
+
 		//5. 다오에서 설정한 작업을 서비스에 담아줌
 		ProdVO prod = service.readProd(prodId);
 		
