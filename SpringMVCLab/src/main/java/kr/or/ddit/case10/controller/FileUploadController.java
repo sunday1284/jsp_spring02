@@ -64,7 +64,9 @@ public class FileUploadController {
 			MultipartFile uploadFile = commandObject.getUploadFile();
 			log.info("uploadFile : {}",uploadFile);
 			//파일 업로드 처리 과정
+			//클라이언트에서 쓸 파일 이름 설정
 			String saveName = UUID.randomUUID().toString();
+			// 저장할 파일 생성
 			File saveFile = new File(saveFolder, saveName);
 			//최종업로드 처리 
 			uploadFile.transferTo(saveFile);
