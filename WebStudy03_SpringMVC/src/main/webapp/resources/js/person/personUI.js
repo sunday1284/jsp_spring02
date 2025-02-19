@@ -67,7 +67,20 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	        });
 		},
 		modify:function(data){
-			
+			let url = `${baseURI}/${data.id}`;
+			$.ajax({
+				url:url,
+				method:"put",
+				dataType:"json",
+				contentType:"application/json",
+				data:JSON.stringify(data),
+				success:function(resp){
+					if(resp.success){
+						personHandler.list();
+						myModalAlternative.hide(); // 모달 닫기
+					}
+				}
+			});
 		}
 	}
 	//이밴트 처리단
@@ -121,9 +134,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
     });
     modalEl.addEventListener("hidden.bs.modal",function(e){
         let $modalBody = $(this).find(".modal-body");
-        $modalBody.empty();
+        //$modalBody.empty();
+		$updateForm.get(0).reset();
         //마지막에 id값을 초기화
         $delBtn[0].dataset.id = "";
+		$(modalEl).removeAttr("aria-hidden");
     });
 
     $delBtn.on("click",function(){
@@ -135,9 +150,21 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     $updateForm.on("submit",function(e){
         e.preventDefault();	
+		let personId = $delBtn[0].dataset.id;
+		
+		let data = {};
+		
+		let fd = new FormData(this);
+        for (let p of fd.keys()){
+            data[p] = fd.get(p);
+        }
+		
+		data.id = personId; // ID 값 추가
+		
         // 1. /person/a001 PUT 
         // 2. 비동기 수정 요청 전송 
 		// 3. tbody 의 목록 갱신 -> 수정된 tr 수정
+		personHandler.modify(data);
 	    // 4. 모달 종료
 	});		
 });

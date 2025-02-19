@@ -85,6 +85,7 @@ public class PersonRestController {
 		@PathVariable String personId
 		 , @RequestBody PersonVO person
 	){
+		dao.updatePerson(person);
 		Map<String, Object> resultMap = new HashMap<>();
 		resultMap.put("success", true);
 		resultMap.put("target", person);
