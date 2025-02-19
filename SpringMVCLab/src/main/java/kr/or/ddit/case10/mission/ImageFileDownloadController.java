@@ -44,6 +44,8 @@ public class ImageFileDownloadController {
 		headers.setContentDisposition(cd);
 		headers.setContentLength(file.contentLength());
 		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-		return ResponseEntity.ok().headers(headers).body(file);
+		return ResponseEntity.ok()
+							.headers(headers)
+							.body(file);
 	}
 }
