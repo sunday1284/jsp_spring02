@@ -26,4 +26,14 @@
 		DELETE FROM PERSON
 		WHERE ID = #{id}
 	</delete>
+	<update id="updatePerson">
+		UPDATE PERSON
+		SET
+		    NAME = #{name,jdbcType=VARCHAR}
+		    ,GENDER = #{gender,jdbcType=CHAR}
+		    ,AGE = #{age,jdbcType=NUMERIC}
+		    ,ADDRESS = #{address,jdbcType=VARCHAR}
+		WHERE
+		      ID = #{id,jdbcType=VARCHAR}
+	</update>
 </mapper>

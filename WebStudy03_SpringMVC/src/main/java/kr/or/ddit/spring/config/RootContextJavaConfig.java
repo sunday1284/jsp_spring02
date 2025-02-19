@@ -18,6 +18,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.TransactionManager;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 
 /**
  * 설정파일에서는 Model -> dao, service만 등록하기 위한 controller 배제 작업
@@ -27,6 +28,7 @@ import org.springframework.transaction.TransactionManager;
 @ComponentScan(basePackages = "kr.or.ddit"
 	, excludeFilters = {
 		@ComponentScan.Filter(classes = Controller.class)
+		, @ComponentScan.Filter(classes = ControllerAdvice.class)
 	}
 )
 

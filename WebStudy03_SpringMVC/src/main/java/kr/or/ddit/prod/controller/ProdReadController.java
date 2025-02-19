@@ -35,32 +35,12 @@ import kr.or.ddit.prod.vo.ProdVO;
 public class ProdReadController{
 	@Inject
 	private ProdService service;
-	@Inject
-	private LprodMapper lprodDao;
 	
-	//핸들러 매핑이 호출해줌 알아서
-	@ModelAttribute("lprodList")
-	public List<LprodVO> lprodList(){
-		return lprodDao.selectLprodList();
-	}
-	
-	@ModelAttribute("buyerList")
-	public List<BuyerVO> buyerList(){
-		List<LprodVO> lprodList = lprodDao.selectLprodList();
-		List<BuyerVO> buyerList = new ArrayList<>();
-		
-		for(LprodVO lp : lprodList) {
-		  List<BuyerVO> innerList =	lp.getBuyerList();
-		  if(innerList.isEmpty()) continue;
-		  else buyerList.addAll(innerList);
-		}
-		return buyerList;
-	}
 	@GetMapping("prodList.do")
 	public String list(
 		Model model // lprodList, buyerList가 알아서 들어감
 		,@RequestParam(name ="page", required =false, defaultValue = "1") int currentPage 
-		,@ModelAttribute("condition") ProdVO condition
+		,@ModelAttribute("condition") ProdVO condition //커맨드 오브젝트
 	) {	
 		//페이징 기법 	
 		//상세 검색용 객체 생성

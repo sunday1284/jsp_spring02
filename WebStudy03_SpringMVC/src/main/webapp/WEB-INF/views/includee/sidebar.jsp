@@ -41,7 +41,10 @@
           
          </ul>
 		</li>
-		
+	
+		<li class="nav-item">
+			<a class="nav-link" href="${pageContext.request.contextPath}/resources/html/personUI.html">RestFul Person</a>
+		</li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="${pageContext.request.contextPath}/resources/NiceAdmin/#">
