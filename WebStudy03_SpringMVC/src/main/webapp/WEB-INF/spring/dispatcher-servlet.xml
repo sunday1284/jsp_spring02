@@ -14,6 +14,7 @@
 	<!-- 컨트롤러 레이어 하나만 읽어들임  -->
 	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
 	
 	<!-- 가장 핵심적인 HandlerMapping, HandlerAdapter, ViewResolver 와 같은 MVC 핵심 전략 객체가 빈으로 등록됨.  -->
@@ -45,6 +46,7 @@
 		<!--json 마샬링 작업 (협상negotiation) -->
 		<mvc:content-negotiation>
 			<mvc:default-views>
+<!-- 				Model 을 마샬링함. -->
 				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" id="jsonView">	
 					<!--json 마샬링-->
 					<property name="objectMapper" ref="objectMapper" />

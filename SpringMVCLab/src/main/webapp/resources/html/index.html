@@ -42,12 +42,18 @@
 	</li>
 	<li>
 		case08 : <a>json 응답을 전송하는 방법</a>
+		@ResponseBody (HttpMessageConverter 활용)
+		@ResponseBody + @Controller --> @RestController
 	</li>
 	<li>
 		case09 : <a>json 요청을 수신하는 방법</a>
+		@RequestBody (HttpMessageConverter 활용)
 	</li>
 	<li>
 		case10 : <a>파일 핸들링(업다운로드)</a>
+		MutilpartFilter : multipart request 를 필터링하고 wrapper request(MultipartHttpServletRequest)를 생성함.
+		MultipartHttpServletRequest : 하나의 part 를 MultipartFile로 캡슐화함. 
+		@RequestPart를 이용해 수신하거나, command object 의 프로퍼티로 수신할 수 있음.
 	</li>
 </ul>
 </body>

@@ -150,6 +150,14 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.14.0</version>
 		</dependency>
+		<!--파일 업로드 지원 -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.5</version>
+		</dependency>
+
+		
 		<!-- 객체 구조를 탐색하는 리플렉션 지원-->
 		<dependency>
 		    <groupId>commons-beanutils</groupId>

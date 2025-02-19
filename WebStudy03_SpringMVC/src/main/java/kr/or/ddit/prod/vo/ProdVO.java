@@ -2,7 +2,16 @@ package kr.or.ddit.prod.vo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.UUID;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import kr.or.ddit.validate.InsertGroup;
+import kr.or.ddit.validate.UpdateGroup;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -32,21 +41,45 @@ import lombok.ToString;
 public class ProdVO implements Serializable{
 	private int rnum;
 	
+	@NotBlank(groups = UpdateGroup.class)
 	private String prodId;
+	@NotBlank
 	private String prodName;
+	@NotBlank(groups = InsertGroup.class)
 	private String lprodGu;
+	@NotBlank(groups = InsertGroup.class)
 	private String buyerId;
+	// 0미만으로는 x
+	@Min(0)
 	private long prodCost;
+	@Min(0)
 	private long prodPrice;
+	@Min(0)
 	private long prodSale;
+	@NotBlank
 	private String prodOutline;
 	@ToString.Exclude
 	private String prodDetail;
+	@NotBlank(groups = InsertGroup.class)
 	@ToString.Exclude
-	private String prodImg;
+	private String prodImg;  //DB에 PROD 테이블 prod_img 컬럼을 위한 프로퍼티 
+	
+	//이미지가 비어있으면..
+	@NotNull(groups = InsertGroup.class)
+	@ToString.Exclude
+	private MultipartFile prodImage; //클라이언트의 업로드 이미지를 받기 위한 프로퍼티 
+	public void setProdImage(MultipartFile prodImage) {
+		if(prodImage==null || prodImage.isEmpty()) return;
+		else {
+			this.prodImage = prodImage;
+			this.prodImg = UUID.randomUUID().toString();
+		}
+	}
+	
 	private long prodTotalstock;
 	//date 일때 형변환
 	private LocalDate prodInsdate;
+	@Min(0)
 	private long prodProperstock;
 	private String prodSize;
 	private String prodColor;
