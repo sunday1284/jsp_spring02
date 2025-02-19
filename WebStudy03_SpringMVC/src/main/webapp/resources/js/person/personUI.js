@@ -66,8 +66,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	            }
 	        });
 		},
-		modify:function(data){
+		modify:function(data){   
+			// 1. /person/a001 PUT 
 			let url = `${baseURI}/${data.id}`;
+			// 2. 비동기 수정 요청 전송
 			$.ajax({
 				url:url,
 				method:"put",
@@ -75,8 +77,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
 				contentType:"application/json",
 				data:JSON.stringify(data),
 				success:function(resp){
+					// 3. tbody 의 목록 갱신 -> 수정된 tr 수정
 					if(resp.success){
 						personHandler.list();
+						// 4. 모달 종료
 						myModalAlternative.hide(); // 모달 닫기
 					}
 				}
@@ -84,12 +88,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 		}
 	}
 	//이밴트 처리단
-    const $personForm = $('#person-form'); //insert
-    const $updateForm = $("#update-form");
-    const $personTb = $('#person-tb');
-    const $personTbody = $('#person-tb tbody');
+    const $personForm = $('#person-form'); //insert form Id selecter
+    const $updateForm = $("#update-form"); // update form id selecter
+    const $personTb = $('#person-tb');  // table selecter
+    const $personTbody = $('#person-tb tbody');//jsp에서 비운 tobody 사이에 값을 넣을거다.
     const baseURI = "../../person";
     const modalEl = document.getElementById('exampleModal');
+	// 부트스트랩에서 모달창 생성자 생성
     const myModalAlternative = new bootstrap.Modal(modalEl, {});
     const $delBtn = $("#del-btn");
 	
