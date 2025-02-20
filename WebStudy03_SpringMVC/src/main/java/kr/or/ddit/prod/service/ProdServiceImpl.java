@@ -10,6 +10,7 @@ import javax.management.RuntimeErrorException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.ddit.paging.PaginationInfo;
@@ -25,9 +26,11 @@ public class ProdServiceImpl implements ProdService {
 	private final ProdMapper dao;
 	@Override
 	public List<ProdVO> readProdList(PaginationInfo<ProdVO> paging) {
-		int totalRecord = dao.selectTotalRecord(paging);
-		// 총 레코드 개수 셋팅
-		paging.setTotalRecord(totalRecord);
+		if(paging!=null) {
+			int totalRecord = dao.selectTotalRecord(paging);
+			// 총 레코드 개수 셋팅
+			paging.setTotalRecord(totalRecord);
+		}
 		return dao.selectProdList(paging);
 	}
 	
@@ -54,6 +57,9 @@ public class ProdServiceImpl implements ProdService {
 	public void processProdImage(ProdVO prod) 
 	{
 		try {
+//			if(1==1)
+//				throw new RuntimeException("트랜잭션 관리 여부를 확인하기 위한 강제 예외");
+			
 			MultipartFile prodImage = prod.getProdImage();
 			//이미지가 업로드 됬으면 선택된상태
 			if(prodImage==null) return;
@@ -65,22 +71,35 @@ public class ProdServiceImpl implements ProdService {
 			
 		}catch(Exception e) {
 			throw new RuntimeException(e);
+			//rollback
 		}
 	}
 	
 	
-	
+	@Transactional // transaction 관리 작업 -> 선언자 프로그래밍(포인트컷 선언)
 	@Override
 	public boolean createProd(ProdVO prod) {
-		processProdImage(prod);
-		return dao.insertProd(prod) > 0;
+		//성공시
+		if(dao.insertProd(prod) > 0) {
+			processProdImage(prod);
+			// commit 
+			return true;
+		}else {
+			return false;
+		}
 	}
 
-
+	@Transactional // transaction 관리 작업 -> 선언자 프로그래밍(포인트컷 선언)
 	@Override
 	public boolean modifyProd(ProdVO prod) {
-		processProdImage(prod);
-		return dao.updateProd(prod) > 0;
+		//트랜잭션관리 용이
+		if(dao.updateProd(prod) > 0) {
+			processProdImage(prod);
+			//commit
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 }

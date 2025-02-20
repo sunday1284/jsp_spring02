@@ -1,12 +1,16 @@
-package kr.or.ddit.prod.vo;
+package kr.or.ddit.buyer.vo;
 
 import java.io.Serializable;
 import java.util.List;
 
+import kr.or.ddit.prod.vo.LprodVO;
+import kr.or.ddit.prod.vo.ProdVO;
 import lombok.Data;
 
 @Data
 public class BuyerVO implements Serializable{
+	private int rnum;
+	
 	private String buyerId;
 	private String buyerName;
 	private String lprodGu;

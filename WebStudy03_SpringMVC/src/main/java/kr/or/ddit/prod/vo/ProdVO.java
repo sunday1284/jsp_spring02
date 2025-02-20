@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.or.ddit.buyer.vo.BuyerVO;
 import kr.or.ddit.validate.InsertGroup;
 import kr.or.ddit.validate.UpdateGroup;
 import lombok.Data;

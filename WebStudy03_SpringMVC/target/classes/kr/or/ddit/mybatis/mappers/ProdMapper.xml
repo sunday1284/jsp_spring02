@@ -13,14 +13,16 @@
 	<sql id="searchFrag">
 		<!--상세 검색할 때 구조-> prefixOverrides AND를 없애줌 -> 조건을 제거해줌 -->
 		<trim prefix="WHERE" prefixOverrides="AND">
-			<if test ="@org.apache.commons.lang3.StringUtils@isNotBlank(detailCondition.lprodGu)">
-				AND P.LPROD_GU = #{detailCondition.lprodGu}
-			</if>
-			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(detailCondition.buyerId)">
-				AND P.BUYER_ID = #{detailCondition.buyerId}
-			</if>
-			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(detailCondition.prodName)">
-				AND INSTR(PROD_NAME, #{detailCondition.prodName}) > 0
+			<if test="paging neq null">
+				<if test ="@org.apache.commons.lang3.StringUtils@isNotBlank(paging.detailCondition.lprodGu)">
+					AND P.LPROD_GU = #{paging.detailCondition.lprodGu}
+				</if>
+				<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(paging.detailCondition.buyerId)">
+					AND P.BUYER_ID = #{paging.detailCondition.buyerId}
+				</if>
+				<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(paging.detailCondition.prodName)">
+					AND INSTR(PROD_NAME, #{paging.detailCondition.prodName}) > 0
+				</if>
 			</if>
 		</trim>
 	</sql>
@@ -44,10 +46,12 @@
 				    PROD_MILEAGE
 				<include refid="fromFrag"/>
 				<include refid="searchFrag" />
-		)    A     
-		<![CDATA[
-			WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}
-		]]>
+		)    A    
+		<if test="paging neq null">
+			<![CDATA[
+				WHERE RNUM >= #{paging.startRow} AND RNUM <= #{paging.endRow}
+			]]>
+		</if> 
 
 	</select>
 	

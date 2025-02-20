@@ -3,6 +3,7 @@ package kr.or.ddit.prod.vo;
 import java.io.Serializable;
 import java.util.List;
 
+import kr.or.ddit.buyer.vo.BuyerVO;
 import lombok.Data;
 
 //부모를 중심으로 보면 Has Many

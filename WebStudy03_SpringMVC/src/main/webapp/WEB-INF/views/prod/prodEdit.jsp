@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
 
+<script src="${pageContext.request.contextPath }/resources/ckeditor/ckeditor.js"></script>
+
 <form:form modelAttribute="prod" method="post" enctype="multipart/form-data">
 	<input type="text" name="prodId" value="${prod.prodId }">
    <div class="row mb-3">
@@ -72,8 +74,7 @@
     <div class="row mb-3">
       <label for="prodDetail" class="col-sm-2 col-form-label">상세정보</label>
       <div class="col-sm-10">
-        <input type="clob" class="form-control" name="prodDetail"
-				id="prodDetail" value="${prod.prodDetail}">
+			<textarea name="prodDetail" id="prodDetail">${prod.prodDetail}</textarea>
 			<form:errors path="prodDetail" class="text-danger" element="span" />
       </div>
     </div>
@@ -178,5 +179,11 @@
 			else
 				$buyerId.find("option").show();
 		}).val("${prod.lprodGu}");
+		
+		 CKEDITOR.replace( 'prodDetail', {
+			 versionCheck : false
+		 } );
 	});
 </script>
+
+

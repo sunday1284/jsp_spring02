@@ -8,12 +8,13 @@ import javax.inject.Inject;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import kr.or.ddit.buyer.vo.BuyerVO;
 import kr.or.ddit.prod.dao.LprodMapper;
-import kr.or.ddit.prod.vo.BuyerVO;
 import kr.or.ddit.prod.vo.LprodVO;
 
-//하위컨테이너에 등록된 advice를 꺼내옴
-@ControllerAdvice
+//aspect
+//하위컨테이너에 등록된 advice를 꺼내옴 -> 부가데이터 
+@ControllerAdvice(basePackages = {"kr.or.ddit.prod.controller", "kr.or.ddit.buyer.controller"} )
 public class ProdControllerAdvice {
 	@Inject
 	private LprodMapper lprodDao;

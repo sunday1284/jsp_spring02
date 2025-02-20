@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +14,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.ddit.buyer.vo.BuyerVO;
 import kr.or.ddit.paging.DefaultPaginationRenderer;
 import kr.or.ddit.paging.PaginationInfo;
 import kr.or.ddit.paging.PaginationRenderer;
 import kr.or.ddit.prod.dao.LprodMapper;
 import kr.or.ddit.prod.service.ProdService;
-import kr.or.ddit.prod.vo.BuyerVO;
 import kr.or.ddit.prod.vo.LprodVO;
 import kr.or.ddit.prod.vo.ProdVO;
 
@@ -36,8 +37,14 @@ public class ProdReadController{
 	@Inject
 	private ProdService service;
 	
+	@GetMapping(value="prodList.do", produces = MediaType.APPLICATION_JSON_VALUE)
+	public void listWithFC(Model model) {
+		List<ProdVO> prodList = service.readProdList();
+		model.addAttribute("prodList", prodList);
+	}
+	
 	@GetMapping("prodList.do")
-	public String list(
+	public String listWithoutFC(
 		Model model // lprodList, buyerList가 알아서 들어감
 		,@RequestParam(name ="page", required =false, defaultValue = "1") int currentPage 
 		,@ModelAttribute("condition") ProdVO condition //커맨드 오브젝트

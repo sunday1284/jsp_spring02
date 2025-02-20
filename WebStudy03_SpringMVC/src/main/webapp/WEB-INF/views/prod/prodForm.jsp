@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
 
-<form:form modelAttribute="prod" method="post" enctype="multipart/form-data">
+<form:form id="insert-form" modelAttribute="prod" method="post" enctype="multipart/form-data">
    <div class="row mb-3">
       <label for="prodName" class="col-sm-2 col-form-label">상품명</label>
       <div class="col-sm-10">
@@ -68,16 +68,18 @@
 			<form:errors path="prodOutline" class="text-danger" element="span" />
       </div>
     </div>
-    <div class="row mb-3">
+    <div class="row mb-5">
       <label for="prodDetail" class="col-sm-2 col-form-label">상세정보</label>
       <div class="col-sm-10">
-        <input type="clob" class="form-control" name="prodDetail"
-				id="prodDetail" value="${prod.prodDetail}">
+      		<div class="quill-editor-full" id="iptDetail" data-target="#prodDetail">
+      			${prod.prodDetail}
+      		</div>
+			<textarea name="prodDetail" id="prodDetail" hidden></textarea>
 			<form:errors path="prodDetail" class="text-danger" element="span" />
       </div>
     </div>
     <div class="row mb-3">
-      <label for="prodImage" class="col-sm-2 col-form-label">업로드이미지</label>
+      <label for="prodImage" class="col-sm-2 col-form-label">이미지</label>
       <div class="col-sm-10">
       
         <input type="file" name="prodImage"  id="prodImage" class="form-control">
@@ -179,5 +181,16 @@
 			else
 				$buyerId.find("option").show();
 		}).val("${prod.lprodGu}");
+		
+		$("#insert-form").on("submit", function(){
+			//quill로 시작되는 속성 
+			$(this).find("[class^='quill']").each(function(idx, ipt){
+				let iptValue = $(ipt).find('.ql-editor').html();
+				let target = ipt.dataset.target;
+				if(target){
+					$(target).val(iptValue);
+				}
+			});
+		});
 	});
 </script>

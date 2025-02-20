@@ -7,6 +7,9 @@ import kr.or.ddit.prod.exception.ProdNotExistException;
 import kr.or.ddit.prod.vo.ProdVO;
 
 public interface ProdService {
+	public default List<ProdVO> readProdList(){
+		return readProdList(null);
+	};
 	public List<ProdVO> readProdList(PaginationInfo<ProdVO> paging);
 	
 //	존재하지 않는 상품의 경우, kr.ddit.prod.exception.ProdNotExistException(Unchecked) 발생 
