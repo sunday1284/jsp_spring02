@@ -38,20 +38,23 @@
               <i class="bi bi-circle"></i><span>상품등록</span>
             </a>
           </li>
-          <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#prods-nav" data-bs-toggle="collapse" href="#">
+          
+         </ul>
+		</li>
+		
+		<li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#buyers-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>재고관리</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="prods-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="buyers-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="${pageContext.request.contextPath}/buyer">
               <i class="bi bi-circle"></i><span>재고목록</span>
             </a>
           </li>
-          
          </ul>
 		</li>
-	
+		
 		<li class="nav-item">
 			<a class="nav-link" href="${pageContext.request.contextPath}/resources/html/personUI.html">RestFul Person</a>
 		</li>
