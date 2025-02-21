@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.ddit.buyer.vo.BuyerVO;
 import kr.or.ddit.paging.DefaultPaginationRenderer;
@@ -22,6 +23,7 @@ import kr.or.ddit.prod.dao.LprodMapper;
 import kr.or.ddit.prod.service.ProdService;
 import kr.or.ddit.prod.vo.LprodVO;
 import kr.or.ddit.prod.vo.ProdVO;
+import kr.or.ddit.prod.vo.fullcalendar.ProdFCEvent;
 
 /**
  * /prod/prodList.do GET 
@@ -37,10 +39,16 @@ public class ProdReadController{
 	@Inject
 	private ProdService service;
 	
-	@GetMapping(value="prodList.do", produces = MediaType.APPLICATION_JSON_VALUE)
-	public void listWithFC(Model model) {
-		List<ProdVO> prodList = service.readProdList();
-		model.addAttribute("prodList", prodList);
+	
+	@GetMapping(value="prodListFC.do")
+	@ResponseBody
+	public List<ProdFCEvent> listWithFC() {
+		List<ProdVO> original = service.readProdList();
+		List<ProdFCEvent> eventList = new ArrayList<>();
+		for(ProdVO adaptee : original) {
+			eventList.add(new ProdFCEvent(adaptee));
+		}
+		return eventList;
 	}
 	
 	@GetMapping("prodList.do")

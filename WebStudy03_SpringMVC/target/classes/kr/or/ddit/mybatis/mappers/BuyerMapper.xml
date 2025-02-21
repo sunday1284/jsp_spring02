@@ -51,5 +51,85 @@
 		</if>
 		</where>
 	</select>
+	<resultMap type="BuyerVO" id="buyerMap" autoMapping="true">
+		<!-- buyerId 존재하지 않는 prodVO가 안만들어지려면.. 이렇게 alias로 명시해줘야함 -->
+		<id property="buyerId" column="BID"/> 
+		<association property="lprod" javaType="LprodVO" autoMapping="true"/>
+		<collection property="prodList" ofType="ProdVO" autoMapping="true"></collection>
+	</resultMap>
+	<select id="selectBuyer" resultMap="buyerMap">
+			WITH LPBUYER AS (
+			    SELECT 
+			    	BUYER_ID AS BID
+			    	, BUYER_NAME
+			    	, BUYER_BANK
+			    	, BUYER_BANKNO
+			    	, BUYER_BANKNAME
+			    	, BUYER_ZIP
+			    	, BUYER_ADD1
+			    	, BUYER_ADD2
+			    	, BUYER_COMTEL
+			    	, BUYER_FAX
+			    	, BUYER_MAIL
+			    	, BUYER_CHARGER
+			    	, BUYER_TELEXT
+			    	, BUYER_IMG
+			        , LPROD_GU
+			        , LPROD_NM
+			    FROM BUYER NATURAL JOIN LPROD
+			    WHERE BUYER_ID = #{buyerId}
+		)
+		SELECT
+		    LP.*
+		    , PROD_ID, PROD_NAME
+		    , PROD_COST, PROD_PRICE
+		    , PROD_SALE, PROD_MILEAGE
+		FROM LPBUYER LP LEFT OUTER JOIN PROD P
+		    ON (LP.BID = P.BUYER_ID)
+			
+	</select>
+	<insert id="insertBuyer">
+		<selectKey order="BEFORE" resultType="string" keyProperty="buyerId">
+			SELECT  
+			    #{lprodGu}||
+			    LPAD(NVL(TO_NUMBER(SUBSTR(MAX(BUYER_ID), 5)), 0) + 1, 2, '0')
+			FROM BUYER
+			WHERE LPROD_GU = #{lprodGu}
+		</selectKey>
+	
+		INSERT INTO BUYER (
+		    BUYER_ID,
+		    BUYER_NAME,
+		    LPROD_GU,
+		    BUYER_BANK,
+		    BUYER_BANKNO,
+		    BUYER_BANKNAME,
+		    BUYER_ZIP,
+		    BUYER_ADD1,
+		    BUYER_ADD2,
+		    BUYER_COMTEL,
+		    BUYER_FAX,
+		    BUYER_MAIL,
+		    BUYER_CHARGER,
+		    BUYER_TELEXT,
+		    BUYER_IMG
+		) VALUES (
+			 #{buyerId,jdbcType=CHAR}
+			, #{buyerName,jdbcType=VARCHAR}
+			, #{lprodGu,jdbcType=CHAR}
+			, #{buyerBank,jdbcType=VARCHAR}
+			, #{buyerBankno,jdbcType=VARCHAR}
+			, #{buyerBankname,jdbcType=VARCHAR}
+			, #{buyerZip,jdbcType=CHAR}
+			, #{buyerAdd1,jdbcType=VARCHAR}
+			, #{buyerAdd2,jdbcType=VARCHAR}
+			, #{buyerComtel,jdbcType=VARCHAR}
+			, #{buyerFax,jdbcType=VARCHAR}
+			, #{buyerMail,jdbcType=VARCHAR}
+			, #{buyerCharger,jdbcType=VARCHAR}
+			, #{buyerTelext,jdbcType=VARCHAR}
+			, #{buyerImg,jdbcType=VARCHAR}
+		)
+	</insert>
 	
 </mapper>

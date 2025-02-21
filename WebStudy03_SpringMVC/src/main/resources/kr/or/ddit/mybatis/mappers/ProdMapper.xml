@@ -42,7 +42,8 @@
 				    P.BUYER_ID, BUYER_NAME,
 				    PROD_COST,
 				    PROD_PRICE,  
-				    PROD_TOTALSTOCK,    
+				    PROD_TOTALSTOCK,
+				    PROD_INSDATE,    
 				    PROD_MILEAGE
 				<include refid="fromFrag"/>
 				<include refid="searchFrag" />

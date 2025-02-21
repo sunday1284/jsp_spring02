@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -47,7 +48,7 @@ public class BuyerReadController {
 		, Model model
 	) {
 		
-		PaginationInfo<BuyerVO> paging = new PaginationInfo<>();
+		PaginationInfo<BuyerVO> paging = new PaginationInfo<>(5, 3);
 		paging.setCurrentPage(currentPage);
 		paging.setDetailCondition(detailCondition);
 		
@@ -58,6 +59,18 @@ public class BuyerReadController {
 		model.addAttribute("pagingHTML", pagingHTML);
 		
 		return "tiles:buyer/buyerList";
+	}
+	
+	@GetMapping("{buyerId}")
+	public String buyerDetail(
+		@PathVariable("buyerId") String buyerId,
+		Model model
+	) {
+		BuyerVO buyer = service.readBuyer(buyerId);
+		model.addAttribute("buyer",buyer);
+		
+		return "tiles:buyer/buyerDetail";
+		
 	}
 }
 

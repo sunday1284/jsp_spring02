@@ -10,11 +10,14 @@ import kr.or.ddit.paging.PaginationInfo;
 
 @Mapper
 public interface BuyerMapper {
-//	insert
+	
+	public int insertBuyer(BuyerVO buyer);
+	public int updateBuyer(BuyerVO buyer);
+	
 	public int selectTotalRecord(@Param("paging") PaginationInfo<BuyerVO> paging);
 	
  	public List<BuyerVO> selectBuyerList(@Param("paging") PaginationInfo<BuyerVO> paging);
-// 	selectBuyer
-//	update
+ 	
+ 	public BuyerVO selectBuyer(String buyerId);
 	
 }

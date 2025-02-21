@@ -44,12 +44,22 @@
 		
 		<li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#buyers-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>재고관리</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-menu-button-wide"></i><span>제조사관리</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="buyers-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="${pageContext.request.contextPath}/buyer">
-              <i class="bi bi-circle"></i><span>재고목록</span>
+              <i class="bi bi-circle"></i><span>재조사목록</span>
+            </a>
+          </li>
+          <li>
+            <a href="${pageContext.request.contextPath}/buyer?datatable">
+              <i class="bi bi-circle"></i><span>재조사목록(페이징외부)</span>
+            </a>
+          </li>
+          <li>
+            <a href="${pageContext.request.contextPath}/buyer/new">
+              <i class="bi bi-circle"></i><span>재조사등록</span>
             </a>
           </li>
          </ul>

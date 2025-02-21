@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+=======
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<!-- 페이징과 검색(제조사분류, 제조사명) 기능 추가 -->
+>>>>>>> branch 'main' of https://github.com/sunday1284/jsp_spring02.git
 <table class="table datatable">
 	<thead class="table-light">
 		<tr>
