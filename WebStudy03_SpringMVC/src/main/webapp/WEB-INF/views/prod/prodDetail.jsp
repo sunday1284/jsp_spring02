@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <table class="table table-bordered">
 	<tr>
 		<td colspan="2">
@@ -52,7 +53,8 @@
 	<tr>
 		<th>이미지</th>
 		<td>
-			<img src="<c:url value='/resources/prodImages/${prod.prodImg}'/>" alt="" />
+			<spring:eval expression="@fileInfo.prodImages" var="prodImages"></spring:eval>
+			<img src="<c:url value='${prodImages }${prod.prodImg}'/>" />
 		</td>
 	</tr>
 	<tr>

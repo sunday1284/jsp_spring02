@@ -19,7 +19,11 @@
 			<c:forEach items="${buyerList }" var="buyer">
 				<tr>
 					<td>${buyer.rnum }</td>
-					<td>${buyer.buyerName }</td>
+					<td>
+					<a href="<c:url value='buyer/${buyer.buyerId}'/>">
+						${buyer.buyerName }
+					</a>
+					</td>
 					<td>${buyer.lprod.lprodNm }</td>
 					<td>${buyer.buyerAdd1 }</td>
 					<td>${buyer.buyerComtel }</td>

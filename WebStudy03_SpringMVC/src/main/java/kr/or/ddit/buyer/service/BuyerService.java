@@ -10,8 +10,8 @@ public interface BuyerService {
 	public default List<BuyerVO> readBuyerList(){
 		return readBuyerList(null);
 	}
-//	create
+	public void createBuyer(BuyerVO buyer);
+	public void modifyBuyer(BuyerVO buyer);
 	public List<BuyerVO> readBuyerList(PaginationInfo<BuyerVO> paging);
-//	readBuyer
-//	modify
+	public BuyerVO readBuyer(String buyerId);
 }
