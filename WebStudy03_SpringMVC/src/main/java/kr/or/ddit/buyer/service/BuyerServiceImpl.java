@@ -50,7 +50,7 @@ public class BuyerServiceImpl implements BuyerService {
 		
 		try {
 			MultipartFile buyerImage = buyer.getBuyerImage();
-			if(buyerImage!=null && buyerImage.isEmpty()) {
+			if(buyerImage!=null && !buyerImage.isEmpty()) {
 				String savename = buyer.getBuyerImg();
 				File saveFile = new File(saveImagesFolder, savename);
 				buyerImage.transferTo(saveFile);

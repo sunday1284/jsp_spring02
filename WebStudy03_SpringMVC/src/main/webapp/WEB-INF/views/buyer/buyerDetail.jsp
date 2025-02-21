@@ -65,8 +65,8 @@
       <th>사업자등록증</th>
       <td>
          <c:if test="${not empty buyer.buyerImg }">
-            <spring:eval expression="@fileInfo.buyerImages" var="buyerImages" />
-            <img src="<c:url value='${buyerImages}${buyer.buyerImg }' />" />
+            <spring:eval expression="@fileInfo.buyerImages" var="buyerImages" ></spring:eval>
+            <img src="<c:url value='${buyerImages}${buyer.buyerImg}'/>" />
          </c:if>
       </td>
    </tr>
