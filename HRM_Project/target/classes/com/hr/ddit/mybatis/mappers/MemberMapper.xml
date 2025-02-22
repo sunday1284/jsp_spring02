@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Mybatis랑 Daointerface는 1대 1 관계 -->
+<mapper namespace="com.hr.ddit.member.dao.MemberDAO">
+<!-- 	SqlMapper : 등록된 모든 쿼리는 쿼리 객체를 생성하고, 쿼리 맵(namespace+.+id, 쿼리 객체)을 형성하는데 사용됨. -->
+	<sql id="searchFrag">
+		<!--trim -> prefix에서 where을 붙여줌 -->
+		<trim prefix="WHERE">
+			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(simpleCondition.searchWord)">
+				<choose>
+					<when test="simpleCondition.searchType eq 'name'">
+						INSTR(MEM_NAME, #{simpleCondition.searchWord}) > 0
+					</when>
+					<when test="simpleCondition.searchType eq 'address'">
+						INSTR(MEM_ADD1, #{simpleCondition.searchWord}) > 0
+					</when>
+					<otherwise>
+						INSTR(MEM_NAME, #{simpleCondition.searchWord}) > 0
+						OR
+						INSTR(MEM_ADD1, #{simpleCondition.searchWord}) > 0
+					</otherwise>
+				</choose>
+			</if>
+		</trim>
+	</sql>
+	
+	<select id="selectTotalRecord" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		<include refid="searchFrag"/>
+	</select>
+	
+	<select id="selectMemberList" resultType="MemberVO">
+		WITH ORDEREDMEMBER AS (
+		     SELECT
+		        ROWID RID
+		        , MEM_ID          
+		        , MEM_NAME               
+		        , MEM_ADD1       
+		        , MEM_HP         
+		        , MEM_MAIL       
+		        , MEM_MILEAGE    
+		    FROM  MEMBER
+		    <include refid="searchFrag"/>
+		    ORDER BY RID DESC
+		), ROWMEMBER AS (
+		    SELECT ROWNUM RNUM 
+		        ,  ORDEREDMEMBER.* 
+		    FROM ORDEREDMEMBER
+		)
+		SELECT ROWMEMBER.*
+		FROM ROWMEMBER
+		WHERE RNUM BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<!--#{} 인라인 파라미터  -->
+	<select id="selectMember" parameterType="string" resultType="MemberVO">
+		 SELECT              
+		     MEM_ID          
+		    , MEM_PASS       
+		    , MEM_NAME       
+		    , MEM_REGNO1     
+		    , MEM_REGNO2     
+		    , TO_CHAR(MEM_BIR, 'YYYY-MM-DD') AS MEM_BIR     
+		    , MEM_ZIP        
+		    , MEM_ADD1       
+		    , MEM_ADD2       
+		    , MEM_HOMETEL    
+		    , MEM_COMTEL     
+		    , MEM_HP         
+		    , MEM_MAIL       
+		    , MEM_JOB        
+		    , MEM_LIKE       
+		    , MEM_MEMORIAL   
+		    , TO_CHAR(MEM_MEMORIALDAY, 'YYYY-MM-DD') AS MEM_MEMORIALDAY 
+		    , MEM_MILEAGE  
+		    , MEM_DELETE   
+		 FROM  MEMBER      
+		 WHERE MEM_ID = #{memId}  
+	</select>
+	<!-- jdbcType -> null이여도 들어감 ,jdbc형식의 null값으로 바꿔줌  -->
+	<insert id="insertMember" parameterType="MemberVO" >
+		INSERT INTO MEMBER (      
+			      MEM_ID          
+			    , MEM_PASS        
+			    , MEM_NAME        
+			    , MEM_REGNO1      
+			    , MEM_REGNO2      
+			    , MEM_BIR         
+			    , MEM_ZIP         
+			    , MEM_ADD1        
+			    , MEM_ADD2        
+			    , MEM_HOMETEL     
+			    , MEM_COMTEL      
+			    , MEM_HP          
+			    , MEM_MAIL        
+			    , MEM_JOB         
+			    , MEM_LIKE        
+			    , MEM_MEMORIAL    
+			    , MEM_MEMORIALDAY 
+			    , MEM_MILEAGE     
+			) VALUES (            
+			      #{memId,jdbcType=VARCHAR}              
+			    , #{memPass,jdbcType=VARCHAR}               
+			    , #{memName,jdbcType=VARCHAR}
+			    , #{memRegno1,jdbcType=CHAR}               
+			    , #{memRegno2,jdbcType=CHAR}
+			    , TO_DATE(#{memBir,jdbcType=DATE}, 'YYYY-MM-DD')             
+			    , #{memZip,jdbcType=CHAR}
+			    , #{memAdd1,jdbcType=VARCHAR}              
+			    , #{memAdd2,jdbcType=VARCHAR}             
+			    , #{memHometel,jdbcType=VARCHAR}             
+			    , #{memComtel,jdbcType=VARCHAR}              
+			    , #{memHp,jdbcType=VARCHAR}              
+			    , #{memMail,jdbcType=VARCHAR}              
+			    , #{memJob,jdbcType=VARCHAR}              
+			    , #{memLike,jdbcType=VARCHAR}              
+			    , #{memMemorial,jdbcType=VARCHAR}              
+			    , TO_DATE(#{memMemorialday}, 'YYYY-MM-DD')             
+			    , #{memMileage,jdbcType=NUMERIC}
+			)                     
+	
+	</insert>
+	
+	<update id="updateMember">	
+		UPDATE MEMBER
+		SET	
+			 MEM_BIR = TO_DATE(#{memBir,jdbcType=DATE}, 'YYYY-MM-DD')
+			, MEM_ZIP = #{memZip,jdbcType=CHAR}
+			, MEM_ADD1 = #{memAdd1,jdbcType=VARCHAR}
+			, MEM_ADD2 = #{memAdd2,jdbcType=VARCHAR}
+			, MEM_HOMETEL = #{memHometel,jdbcType=VARCHAR}
+			, MEM_COMTEL = #{memComtel,jdbcType=VARCHAR}
+			, MEM_HP = #{memHp,jdbcType=VARCHAR}
+			, MEM_MAIL = #{memMail,jdbcType=VARCHAR}
+			, MEM_JOB = #{memJob,jdbcType=VARCHAR}
+			, MEM_LIKE = #{memLike,jdbcType=VARCHAR}
+			, MEM_MEMORIAL = #{memMemorial,jdbcType=VARCHAR}
+			, MEM_MEMORIALDAY = TO_DATE(#{memMemorialday,jdbcType=DATE},'YYYY-MM-DD')
+		WHERE MEM_ID = #{memId,jdbcType=VARCHAR}		
+	</update>
+	<!-- delete interface -> @Param 값을 주면 자동완성 -->
+	<delete id="deleteMember" >
+		UPDATE MEMBER
+		SET
+		MEM_DELETE = 'Y'
+		WHERE MEM_ID = #{memId}
+	</delete>
+	
+</mapper>

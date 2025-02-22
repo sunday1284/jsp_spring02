@@ -1,4 +1,4 @@
-package kr.or.ddit.auth.controller;
+package com.hr.ddit.auth.controller;
 
 import javax.servlet.http.HttpSession;
 
