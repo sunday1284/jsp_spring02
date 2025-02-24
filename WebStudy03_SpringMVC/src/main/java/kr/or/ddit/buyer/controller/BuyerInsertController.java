@@ -45,7 +45,7 @@ public class BuyerInsertController {
       ,RedirectAttributes redirectAttributes
       ,Model model
    ) {
-      if(!errors.hasErrors()) {
+      if(!errors.hasErrors()) { 
          service.createBuyer(buyer);
          redirectAttributes.addFlashAttribute("message", "제조사 등록 완료");
          return "redirect:/buyer/"+buyer.getBuyerId();
