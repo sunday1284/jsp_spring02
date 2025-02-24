@@ -4,7 +4,16 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!--    제조사 분류 코드 대신 분류명 출력 -->
 <!--    해당 제조사의 거래 품목(상품명, 구매가, 판매가, 세일가, 마일리지) 리스트 출력. -->
+
 <table class="table table-bordered">
+	<tr>
+		<td colspan="2">
+		<button onclick="history.go(-1);"> 뒤로가기</button>
+			<c:url value="/buyer/${buyer.buyerId}/edit" var="editUrl" />
+			<a class="btn btn-primary" href="${editUrl }">제조사 수정</a>	
+	</tr>
+
+	
    <tr>
       <th>제조사코드</th>
       <td>${buyer.buyerId}</td>
@@ -15,7 +24,7 @@
    </tr>
    <tr>
       <th>분류명</th>
-      <td>${buyer.lprod.lprodGu}</td>
+      <td>${buyer.lprod.lprodNm}</td>
    </tr>
    <tr>
       <th>거래은행</th>

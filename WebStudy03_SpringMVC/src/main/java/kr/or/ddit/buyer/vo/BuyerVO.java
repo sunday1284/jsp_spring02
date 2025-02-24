@@ -62,7 +62,6 @@ public class BuyerVO implements Serializable{
 		
 		this.buyerImage = buyerImage;
 		this.buyerImg = UUID.randomUUID().toString();
-		
 	}
 	
 	

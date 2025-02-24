@@ -1,16 +1,8 @@
 package kr.or.ddit.auth.controller;
 
-import java.io.IOException;
-
 import javax.inject.Inject;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +10,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.ddit.auth.exception.AuthenticateException;
 import kr.or.ddit.auth.service.AuthenticateService;
-import kr.or.ddit.auth.service.AuthenticateServiceImpl;
 import kr.or.ddit.member.vo.MemberVO;
 
 //redirect는 파라미터를 넘기지 않고 넘어가게 하는법

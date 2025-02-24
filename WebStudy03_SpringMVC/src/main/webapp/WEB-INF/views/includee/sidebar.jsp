@@ -38,6 +38,11 @@
               <i class="bi bi-circle"></i><span>상품등록</span>
             </a>
           </li>
+          <li>
+            <a href="${pageContext.request.contextPath}/resources/html/prodFC.html">
+              <i class="bi bi-circle"></i><span>상품일정(FullCalender)</span>
+            </a>
+          </li>
           
          </ul>
 		</li>
@@ -54,7 +59,7 @@
           </li>
           <li>
             <a href="${pageContext.request.contextPath}/buyer?datatable">
-              <i class="bi bi-circle"></i><span>재조사목록(페이징외부)</span>
+              <i class="bi bi-circle"></i><span>재조사목록(datatable,비동기)</span>
             </a>
           </li>
           <li>
