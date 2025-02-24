@@ -7,7 +7,7 @@
 	<c:when test="${not empty authMember }">
 		<h4>현재 사용자 : 
 		
-			<a href="<c:url value='/mypage'/>">${authMember.memName}</a>
+			<a href="<c:url value='/mypage'/>">${authMember.memName} ${authMember.authorities }</a>
 		
 		</h4>	
 		<a href="<c:url value='/Login/Logout'/>">로그아웃</a>

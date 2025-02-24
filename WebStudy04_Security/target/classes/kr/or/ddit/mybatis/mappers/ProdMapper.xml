@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.ddit.prod.dao.ProdMapper">
+	<resultMap type="ProdVO" id="prodMap" autoMapping="true">
+		<association property="lprod" javaType="LprodVO" autoMapping="true"/>
+		<association property="buyer" javaType="BuyerVO" autoMapping="true" />
+	</resultMap>
+	<!--from 중복 해결  -->
+	<sql id="fromFrag">
+		FROM PROD P INNER JOIN LPROD LP ON(P.LPROD_GU = LP.LPROD_GU)
+					INNER JOIN BUYER B ON(P.BUYER_ID = B.BUYER_ID) 
+	</sql>
+	<sql id="searchFrag">
+		<!--상세 검색할 때 구조-> prefixOverrides AND를 없애줌 -> 조건을 제거해줌 -->
+		<trim prefix="WHERE" prefixOverrides="AND">
+			<if test="paging neq null">
+				<if test ="@org.apache.commons.lang3.StringUtils@isNotBlank(paging.detailCondition.lprodGu)">
+					AND P.LPROD_GU = #{paging.detailCondition.lprodGu}
+				</if>
+				<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(paging.detailCondition.buyerId)">
+					AND P.BUYER_ID = #{paging.detailCondition.buyerId}
+				</if>
+				<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(paging.detailCondition.prodName)">
+					AND INSTR(PROD_NAME, #{paging.detailCondition.prodName}) > 0
+				</if>
+			</if>
+		</trim>
+	</sql>
+	<select id="selectTotalRecord" resultType="int">
+		SELECT COUNT(*)
+		<include refid="fromFrag" />
+		<include refid="searchFrag"/>
+	</select>
+	
+	<select id="selectProdList" resultMap="prodMap" >
+		SELECT A.*
+		FROM(  
+		    SELECT  ROWNUM RNUM, 
+				    PROD_ID,
+				    PROD_NAME,
+				    P.LPROD_GU, LPROD_NM,
+				    P.BUYER_ID, BUYER_NAME,
+				    PROD_COST,
+				    PROD_PRICE,  
+				    PROD_TOTALSTOCK,
+				    PROD_INSDATE,    
+				    PROD_MILEAGE
+				<include refid="fromFrag"/>
+				<include refid="searchFrag" />
+		)    A    
+		<if test="paging neq null">
+			<![CDATA[
+				WHERE RNUM >= #{paging.startRow} AND RNUM <= #{paging.endRow}
+			]]>
+		</if> 
+
+	</select>
+	
+	<select id="selectProd" resultType="ProdVO">
+		SELECT
+		    PROD_ID,
+		    PROD_NAME,
+		    LPROD_GU,
+		    BUYER_ID,
+		    PROD_COST,
+		    PROD_PRICE,
+		    PROD_SALE,
+		    PROD_OUTLINE,
+		    PROD_DETAIL,
+		    PROD_IMG,
+		    PROD_TOTALSTOCK,
+		    PROD_INSDATE, 
+		    PROD_PROPERSTOCK,
+		    PROD_SIZE,
+		    PROD_COLOR,
+		    PROD_DELIVERY,
+		    PROD_UNIT,
+		    PROD_QTYIN,
+		    PROD_QTYSALE,
+		    PROD_MILEAGE
+		FROM
+		    PROD
+		WHERE 
+		    PROD_ID = #{prodId}
+	</select>
+	
+	<insert id="insertProd">
+		<!-- insert 하기 전에 먼저 보여준다. -->
+		<selectKey order="BEFORE" resultType="string" keyProperty="prodId">
+			SELECT
+			    #{lprodGu} ||
+			    LPAD(
+			      NVL(TO_NUMBER(SUBSTR(MAX(PROD_ID), 5)),0) + 1
+			      , 6
+			      , '0'
+			    ) PROD_ID
+			FROM PROD 
+			WHERE LPROD_GU = #{lprodGu}
+		</selectKey>
+		INSERT INTO PROD (
+			    PROD_ID,
+			    PROD_NAME,
+			    LPROD_GU,
+			    BUYER_ID,
+			    PROD_COST,
+			    PROD_PRICE,
+			    PROD_SALE,
+			    PROD_OUTLINE,
+			    PROD_DETAIL,
+			    PROD_IMG,
+			    PROD_TOTALSTOCK,
+			    PROD_INSDATE,
+			    PROD_PROPERSTOCK,
+			    PROD_SIZE,
+			    PROD_COLOR,
+			    PROD_DELIVERY,
+			    PROD_UNIT,
+			    PROD_QTYIN,
+			    PROD_QTYSALE,
+			    PROD_MILEAGE
+			) VALUES (
+				#{prodId,jdbcType=VARCHAR}
+				, #{prodName,jdbcType=VARCHAR}
+				, #{lprodGu,jdbcType=CHAR}
+				, #{buyerId,jdbcType=CHAR}
+				, #{prodCost,jdbcType=NUMERIC}
+				, #{prodPrice,jdbcType=NUMERIC}
+				, #{prodSale,jdbcType=NUMERIC}
+				, #{prodOutline,jdbcType=VARCHAR}
+				, #{prodDetail,jdbcType=CLOB}
+				, #{prodImg,jdbcType=VARCHAR}
+				, #{prodTotalstock,jdbcType=NUMERIC}
+				, SYSDATE
+				, #{prodProperstock,jdbcType=NUMERIC}
+				, #{prodSize,jdbcType=VARCHAR}
+				, #{prodColor,jdbcType=VARCHAR}
+				, #{prodDelivery,jdbcType=VARCHAR}
+				, #{prodUnit,jdbcType=VARCHAR}
+				, #{prodQtyin,jdbcType=NUMERIC}
+				, #{prodQtysale,jdbcType=NUMERIC}
+				, #{prodMileage,jdbcType=NUMERIC}
+			)
+	</insert>
+	<update id="updateProd">
+		UPDATE PROD
+		SET
+			 PROD_COST = #{prodCost,jdbcType=NUMERIC}
+			, PROD_PRICE = #{prodPrice,jdbcType=NUMERIC}
+			, PROD_SALE = #{prodSale,jdbcType=NUMERIC}
+			, PROD_OUTLINE = #{prodOutline,jdbcType=VARCHAR}
+			, PROD_DETAIL = #{prodDetail,jdbcType=CLOB}
+			, PROD_TOTALSTOCK = #{prodTotalstock,jdbcType=NUMERIC}
+			, PROD_PROPERSTOCK = #{prodProperstock,jdbcType=NUMERIC}
+			, PROD_SIZE = #{prodSize,jdbcType=VARCHAR}
+			, PROD_COLOR = #{prodColor,jdbcType=VARCHAR}
+			, PROD_DELIVERY = #{prodDelivery,jdbcType=VARCHAR}
+			, PROD_UNIT = #{prodUnit,jdbcType=VARCHAR}
+			, PROD_QTYIN = #{prodQtyin,jdbcType=NUMERIC}
+			, PROD_QTYSALE = #{prodQtysale,jdbcType=NUMERIC}
+			, PROD_MILEAGE = #{prodMileage,jdbcType=NUMERIC}
+			<!-- 이미지를 바꿀려고 하는경우 -> 동적인 컬럼은 맨 마지막에 -->
+			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(prodImg)">
+				, PROD_IMG = #{prodImg}
+			</if>
+		WHERE PROD_ID = #{prodId}
+	</update>
+</mapper>

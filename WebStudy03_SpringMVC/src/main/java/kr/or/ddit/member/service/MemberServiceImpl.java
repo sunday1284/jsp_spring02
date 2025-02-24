@@ -2,14 +2,11 @@ package kr.or.ddit.member.service;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.auth.exception.AuthenticateException;
 import kr.or.ddit.auth.service.AuthenticateService;
-import kr.or.ddit.auth.service.AuthenticateServiceImpl;
 import kr.or.ddit.member.dao.MemberDAO;
 import kr.or.ddit.member.exception.UserNotFoundException;
 import kr.or.ddit.member.vo.MemberVO;

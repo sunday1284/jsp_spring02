@@ -53,7 +53,13 @@
 		WHERE RNUM BETWEEN #{startRow} AND #{endRow}
 	</select>
 	<!--#{} 인라인 파라미터  -->
-	<select id="selectMember" parameterType="string" resultType="MemberVO">
+	<resultMap type="MemberVO" id="memberMap" autoMapping="true">
+		<id property="memId" column="MEM_ID"/>
+		<collection property="authorities" ofType="string">
+			<result column="AUTHORITY" />
+		</collection>
+	</resultMap>
+	<select id="selectMember" parameterType="string" resultMap="memberMap">
 		 SELECT              
 		     MEM_ID          
 		    , MEM_PASS       
@@ -73,8 +79,9 @@
 		    , MEM_MEMORIAL   
 		    , TO_CHAR(MEM_MEMORIALDAY, 'YYYY-MM-DD') AS MEM_MEMORIALDAY 
 		    , MEM_MILEAGE  
-		    , MEM_DELETE   
-		 FROM  MEMBER      
+		    , MEM_DELETE  
+		    , AUTHORITY
+		 FROM MEMBER  NATURAL JOIN AUTHORITIES  
 		 WHERE MEM_ID = #{memId}  
 	</select>
 	<!-- jdbcType -> null이여도 들어감 ,jdbc형식의 null값으로 바꿔줌  -->
