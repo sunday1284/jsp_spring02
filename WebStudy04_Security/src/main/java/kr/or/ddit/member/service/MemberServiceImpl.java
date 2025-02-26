@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -34,6 +35,7 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private PasswordEncoder encoder;
 	
+//	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public boolean createMember(MemberVO member) {
 		
@@ -47,7 +49,8 @@ public class MemberServiceImpl implements MemberService {
 		int rowcnt = dao.insertMember(member);
 		return rowcnt > 0;
 	}
-
+	
+//	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public List<MemberVO> readMemberList(PaginationInfo<MemberVO> paging) {
 		int totalRecord = dao.selectTotalRecord(paging);
