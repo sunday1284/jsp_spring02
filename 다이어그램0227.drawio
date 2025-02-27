@@ -1,59 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net">
-  <diagram name="전자결재 유스케이스 다이어그램">
-    <mxGraphModel dx="1434" dy="1915" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.16">
+  <diagram name="전자결재 유스케이스 다이어그램" id="0">
+    <mxGraphModel dx="1434" dy="746" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        
-        <!-- Actors -->
-        <mxCell id="actor1" value="기안자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="actor1" value="기안자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="100" y="100" width="60" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="actor2" value="결재자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="actor2" value="결재자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="500" y="100" width="60" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="actor3" value="관리자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="actor3" value="관리자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="900" y="100" width="60" height="120" as="geometry" />
         </mxCell>
-        
-        <!-- Use Cases -->
-        <mxCell id="usecase1" value="결재 문서 작성" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="usecase1" value="결재 문서 작성" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
           <mxGeometry x="250" y="300" width="160" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="usecase2" value="결재 상신" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="usecase2" value="결재 상신" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
           <mxGeometry x="250" y="400" width="160" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="usecase3" value="결재 진행" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="usecase3" value="결재 진행" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
           <mxGeometry x="650" y="300" width="160" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="usecase4" value="결재 승인" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="usecase4" value="결재 승인" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
           <mxGeometry x="650" y="400" width="160" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="usecase5" value="결재 반려" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="usecase5" value="결재 반려" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
           <mxGeometry x="650" y="500" width="160" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="usecase6" value="결재 문서 수정/삭제 요청 승인" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="usecase6" value="결재 문서 수정/삭제 요청 승인" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
           <mxGeometry x="1050" y="300" width="200" height="60" as="geometry" />
         </mxCell>
-        
-        <!-- Relations -->
-        <mxCell id="relation1" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="actor1" target="usecase1">
+        <mxCell id="relation1" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;" parent="1" source="actor1" target="usecase1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="relation2" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="actor1" target="usecase2">
+        <mxCell id="relation2" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;" parent="1" source="actor1" target="usecase2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="relation3" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="actor2" target="usecase3">
+        <mxCell id="relation3" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;" parent="1" source="actor2" target="usecase3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="relation4" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="actor2" target="usecase4">
+        <mxCell id="relation4" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;" parent="1" source="actor2" target="usecase4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="relation5" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="actor2" target="usecase5">
+        <mxCell id="relation5" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;" parent="1" source="actor2" target="usecase5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="relation6" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="actor3" target="usecase6">
+        <mxCell id="relation6" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;" parent="1" source="actor3" target="usecase6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
