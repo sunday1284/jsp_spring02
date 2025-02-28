@@ -8,10 +8,10 @@
           <mxGeometry x="10" y="100" width="50" height="80" as="geometry" />
         </mxCell>
         <mxCell id="actor2" value="결재자(A)" style="shape=umlActor;" parent="1" vertex="1">
-          <mxGeometry x="10" y="300" width="50" height="80" as="geometry" />
+          <mxGeometry x="10" y="220" width="50" height="80" as="geometry" />
         </mxCell>
         <mxCell id="actor3" value="결재자(B)" style="shape=umlActor;" parent="1" vertex="1">
-          <mxGeometry x="10" y="450" width="50" height="80" as="geometry" />
+          <mxGeometry x="20" y="460" width="50" height="80" as="geometry" />
         </mxCell>
         <mxCell id="actor4" value="인사관리자&#xa;" style="shape=umlActor;" parent="1" vertex="1">
           <mxGeometry x="10" y="600" width="50" height="80" as="geometry" />
@@ -23,13 +23,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="uc2" value="결재 요청" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="320" y="100" width="120" height="50" as="geometry" />
+          <mxGeometry x="380" y="100" width="120" height="50" as="geometry" />
         </mxCell>
         <mxCell id="line2" parent="1" source="uc1" target="uc2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="uc3" value="결재 진행" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="320" y="300" width="120" height="50" as="geometry" />
+          <mxGeometry x="270" y="310" width="120" height="50" as="geometry" />
         </mxCell>
         <mxCell id="line3" parent="1" source="uc2" target="uc3" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -104,6 +104,30 @@
         </mxCell>
         <mxCell id="line14" parent="1" source="actor4" target="uc9" edge="1">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NACkWsATf_4lM5upRIxa-5" value="협조자" style="shape=umlActor;" vertex="1" parent="1">
+          <mxGeometry x="10" y="330" width="50" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NACkWsATf_4lM5upRIxa-6" value="의견 제출" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="170" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="NACkWsATf_4lM5upRIxa-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.99;entryY=0.686;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="uc5" target="NACkWsATf_4lM5upRIxa-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="340" as="sourcePoint" />
+            <mxPoint x="610" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NACkWsATf_4lM5upRIxa-9" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="NACkWsATf_4lM5upRIxa-5" target="NACkWsATf_4lM5upRIxa-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="100" y="360" as="sourcePoint" />
+            <mxPoint x="150" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NACkWsATf_4lM5upRIxa-10" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="NACkWsATf_4lM5upRIxa-6" target="uc5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="300" as="sourcePoint" />
+            <mxPoint x="450" y="250" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
