@@ -8,10 +8,10 @@
           <mxGeometry x="10" y="100" width="50" height="80" as="geometry" />
         </mxCell>
         <mxCell id="actor2" value="결재자(A)" style="shape=umlActor;" parent="1" vertex="1">
-          <mxGeometry x="10" y="220" width="50" height="80" as="geometry" />
+          <mxGeometry x="10" y="220" width="50" height="110" as="geometry" />
         </mxCell>
         <mxCell id="actor3" value="결재자(B)" style="shape=umlActor;" parent="1" vertex="1">
-          <mxGeometry x="20" y="460" width="50" height="80" as="geometry" />
+          <mxGeometry x="10" y="430" width="60" height="110" as="geometry" />
         </mxCell>
         <mxCell id="actor4" value="인사관리자&#xa;" style="shape=umlActor;" parent="1" vertex="1">
           <mxGeometry x="10" y="600" width="50" height="80" as="geometry" />
@@ -69,7 +69,7 @@
         <mxCell id="uc7" value="결재 반려" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="500" y="530" width="120" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="line10" parent="1" source="uc3" target="uc7" edge="1">
+        <mxCell id="line10" style="fillColor=#f8cecc;strokeColor=#b85450;" parent="1" source="uc3" target="uc7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="NACkWsATf_4lM5upRIxa-3" value="반려함" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="line10" vertex="1" connectable="0">
@@ -83,7 +83,7 @@
         <mxCell id="line11" parent="1" source="actor1" target="uc8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="line12" parent="1" source="uc7" target="uc8" edge="1">
+        <mxCell id="line12" style="fillColor=#f8cecc;strokeColor=#b85450;" parent="1" source="uc7" target="uc8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="NACkWsATf_4lM5upRIxa-1" value="반려사유" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="line12" vertex="1" connectable="0">
@@ -94,7 +94,7 @@
         <mxCell id="uc9" value="관리자 승인 후 수정" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="370" y="650" width="150" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="line13" parent="1" source="uc8" target="uc9" edge="1">
+        <mxCell id="line13" style="fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="uc8" target="uc9" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="NACkWsATf_4lM5upRIxa-2" value="수정요청" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="line13" vertex="1" connectable="0">
@@ -105,8 +105,8 @@
         <mxCell id="line14" parent="1" source="actor4" target="uc9" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NACkWsATf_4lM5upRIxa-5" value="협조자" style="shape=umlActor;" parent="1" vertex="1">
-          <mxGeometry x="170" y="270" width="50" height="80" as="geometry" />
+        <mxCell id="NACkWsATf_4lM5upRIxa-5" value="협조자" style="shape=umlActor;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="220" y="310" width="50" height="80" as="geometry" />
         </mxCell>
         <mxCell id="NACkWsATf_4lM5upRIxa-6" value="의견 제출" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="240" y="170" width="120" height="70" as="geometry" />
@@ -127,6 +127,12 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="400" y="300" as="sourcePoint" />
             <mxPoint x="450" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hyIFtBysSQ-iueJfZI30-4" value="" style="endArrow=none;html=1;rounded=0;exitX=0.56;exitY=0.613;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="NACkWsATf_4lM5upRIxa-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="380" as="sourcePoint" />
+            <mxPoint x="310" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
