@@ -1,50 +1,90 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <mxfile host="app.diagrams.net">
-  <diagram name="Approval Use Case" id="1">
-    <mxGraphModel>
+  <diagram id="유스케이스-다이어그램" name="페이지-1">
+    <mxGraphModel dx="1410" dy="750" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         
-        <!-- Actors -->
-        <mxCell id="2" value="사용자" style="shape=actor" vertex="1" parent="1">
-          <mxGeometry x="50" y="150" width="50" height="100" as="geometry" />
+        <!-- 액터: 기안자 -->
+        <mxCell id="actor1" value="기안자" style="shape=umlActor;" vertex="1" parent="1">
+          <mxGeometry x="10" y="100" width="50" height="80" as="geometry" />
         </mxCell>
-        
-        <mxCell id="3" value="관리자" style="shape=actor" vertex="1" parent="1">
-          <mxGeometry x="50" y="350" width="50" height="100" as="geometry" />
+
+        <!-- 액터: 결재자 -->
+        <mxCell id="actor2" value="결재자" style="shape=umlActor;" vertex="1" parent="1">
+          <mxGeometry x="10" y="300" width="50" height="80" as="geometry" />
         </mxCell>
-        
-        <!-- Use Cases -->
-        <mxCell id="4" value="결재함 관리" style="ellipse" vertex="1" parent="1">
-          <mxGeometry x="200" y="100" width="120" height="60" as="geometry" />
+
+        <!-- 액터: 관리자 -->
+        <mxCell id="actor3" value="관리자" style="shape=umlActor;" vertex="1" parent="1">
+          <mxGeometry x="10" y="500" width="50" height="80" as="geometry" />
         </mxCell>
-        
-        <mxCell id="5" value="문서 이관" style="ellipse" vertex="1" parent="1">
-          <mxGeometry x="200" y="200" width="120" height="60" as="geometry" />
+
+        <!-- 유스케이스: 결재 문서 작성 -->
+        <mxCell id="uc1" value="결재 문서 작성" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="100" width="120" height="50" as="geometry" />
         </mxCell>
-        
-        <mxCell id="6" value="결재 설정" style="ellipse" vertex="1" parent="1">
-          <mxGeometry x="200" y="300" width="120" height="60" as="geometry" />
+        <mxCell id="line1" edge="1" parent="1" source="actor1" target="uc1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        
-        <mxCell id="7" value="문서 수정" style="ellipse" vertex="1" parent="1">
-          <mxGeometry x="200" y="400" width="120" height="60" as="geometry" />
+
+        <!-- 유스케이스: 결재 요청 -->
+        <mxCell id="uc2" value="결재 요청" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="100" width="120" height="50" as="geometry" />
         </mxCell>
-        
-        <mxCell id="8" value="결재 순서 관리" style="ellipse" vertex="1" parent="1">
-          <mxGeometry x="200" y="500" width="120" height="60" as="geometry" />
+        <mxCell id="line2" edge="1" parent="1" source="uc1" target="uc2">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        
-        <!-- Relationships -->
-        <mxCell id="9" edge="1" parent="1" source="2" target="4" />
-        <mxCell id="10" edge="1" parent="1" source="2" target="5" />
-        <mxCell id="11" edge="1" parent="1" source="2" target="6" />
-        <mxCell id="12" edge="1" parent="1" source="2" target="7" />
-        <mxCell id="13" edge="1" parent="1" source="2" target="8" />
-        
-        <mxCell id="14" edge="1" parent="1" source="3" target="7" />
-        <mxCell id="15" edge="1" parent="1" source="3" target="8" />
+
+        <!-- 유스케이스: 결재 진행 -->
+        <mxCell id="uc3" value="결재 진행" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="300" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="line3" edge="1" parent="1" source="uc2" target="uc3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line4" edge="1" parent="1" source="actor2" target="uc3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 유스케이스: 결재 완료 -->
+        <mxCell id="uc4" value="결재 완료" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="300" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="line5" edge="1" parent="1" source="uc3" target="uc4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 유스케이스: 결재 반려 -->
+        <mxCell id="uc5" value="결재 반려" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="380" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="line6" edge="1" parent="1" source="uc3" target="uc5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 유스케이스: 문서 수정 -->
+        <mxCell id="uc6" value="문서 수정" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="500" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="line7" edge="1" parent="1" source="actor1" target="uc6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line8" edge="1" parent="1" source="uc5" target="uc6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 관리자 승인 후 수정 -->
+        <mxCell id="uc7" value="관리자 승인 후 수정" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="500" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="line9" edge="1" parent="1" source="uc6" target="uc7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line10" edge="1" parent="1" source="actor3" target="uc7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
       </root>
     </mxGraphModel>
   </diagram>
