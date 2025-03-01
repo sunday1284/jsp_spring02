@@ -10,7 +10,7 @@
   </context-param>
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>com.hr.ddit.spring.config.RootContextJavaConfig</param-value>
+    <param-value>kr.or.ddit.spring.config.RootContextJavaConfig</param-value>
   </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -34,6 +34,23 @@
   <filter-mapping>
     <filter-name>MultipartFilter</filter-name>
     <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+  	   <filter-name>AuthenticationFilter</filter-name>
+  	   <filter-class>kr.or.ddit.auth.filter.AuthenticationFilter</filter-class>
+  </filter>
+  <!--인증 인가처리   -->
+  <filter-mapping>
+  	<filter-name>AuthenticationFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+  	<filter-name>AuthorizationFilter</filter-name>
+  	<filter-class>kr.or.ddit.auth.filter.AuthorizationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>AuthorizationFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
   </filter-mapping>
   <servlet>
     <servlet-name>dispatherServlet</servlet-name>

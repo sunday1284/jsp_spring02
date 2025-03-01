@@ -8,7 +8,8 @@ import java.lang.annotation.Target;
 
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 
-import com.hr.ddit.spring.config.RootContextJavaConfig;
+import kr.or.ddit.spring.config.RootContextJavaConfig;
+
 
 @SpringJUnitWebConfig(RootContextJavaConfig.class)
 @Retention(RUNTIME)
