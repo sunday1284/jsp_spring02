@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import kr.or.ddit.person.vo.PersonVO;
 
+
 @Mapper
 public interface PersonMapper {
 	public int insertPerson(PersonVO person);
