@@ -203,7 +203,12 @@
 		    <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
 		    <version>1.16</version>
 		</dependency>
-
+		<!--java apache valid-->
+		<dependency>
+		    <groupId>commons-validator</groupId>
+		    <artifactId>commons-validator</artifactId>
+		    <version>1.7</version>
+		</dependency>
 		
 		
 		<!-- 단위 테스트 지원용-->
