@@ -1,9 +1,36 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.16">
-  <diagram name="페이지-1" id="e_LWmmZsm8bqdCDbDcEm">
-    <mxGraphModel>
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="알림 및 시스템 연동" id="0">
+    <mxGraphModel dx="1378" dy="747" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+
+        <!-- Actor: 시스템 -->
+        <mxCell id="actor1" value="시스템" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="50" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Use Case: 결재 진행 알림 -->
+        <mxCell id="usecase1" value="결재 진행 알림" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="150" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Use Case: 상태 변경 알림 -->
+        <mxCell id="usecase2" value="상태 변경 알림" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="300" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 연결선: 시스템 -> 결재 진행 알림 -->
+        <mxCell id="edge1" edge="1" parent="1" source="actor1" target="usecase1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 연결선: 시스템 -> 상태 변경 알림 -->
+        <mxCell id="edge2" edge="1" parent="1" source="actor1" target="usecase2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
       </root>
     </mxGraphModel>
   </diagram>
