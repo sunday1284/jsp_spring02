@@ -213,6 +213,12 @@
 			<version>5.11.4</version>
 			<scope>test</scope>
 		</dependency>
+		<!--java apache valid-->
+		<dependency>
+		    <groupId>commons-validator</groupId>
+		    <artifactId>commons-validator</artifactId>
+		    <version>1.7</version>
+		</dependency>
 		
 		<!-- 테스트 컨테이너 생성용. @SpringJunitConfig-->
 		<dependency>
