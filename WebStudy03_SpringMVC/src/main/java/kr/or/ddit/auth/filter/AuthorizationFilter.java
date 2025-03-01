@@ -25,12 +25,14 @@ public class AuthorizationFilter implements Filter {
 
 	private ServletContext application;
 
+	//보호자원 가져오기
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		application = filterConfig.getServletContext();
 	}
 	
 	private String getResourceRole(HttpServletRequest req) {
+		//보호자원
 		Map<String, String> securedResources = (Map) application.getAttribute("securedResources");
 		String uri = req.getRequestURI();
 		for(String key : securedResources.keySet()) {
