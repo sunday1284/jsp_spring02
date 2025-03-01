@@ -22,23 +22,23 @@
     </mxCell>
     
     <!-- Use Cases -->
-    <mxCell id="U1" value="문서 작성" style="ellipse;" vertex="1" parent="1">
-      <mxGeometry x="150" y="100" width="120" height="60" as="geometry" />
+    <mxCell id="U1" value="결재 양식 관리" style="ellipse;" vertex="1" parent="1">
+      <mxGeometry x="150" y="100" width="140" height="60" as="geometry" />
     </mxCell>
-    <mxCell id="U2" value="결재 요청" style="ellipse;" vertex="1" parent="1">
-      <mxGeometry x="150" y="200" width="120" height="60" as="geometry" />
+    <mxCell id="U2" value="기안 문서 작성" style="ellipse;" vertex="1" parent="1">
+      <mxGeometry x="150" y="200" width="140" height="60" as="geometry" />
     </mxCell>
-    <mxCell id="U3" value="결재 처리 (승인/반려/보류)" style="ellipse;" vertex="1" parent="1">
-      <mxGeometry x="150" y="300" width="160" height="60" as="geometry" />
+    <mxCell id="U3" value="결재 라인 설정" style="ellipse;" vertex="1" parent="1">
+      <mxGeometry x="150" y="300" width="140" height="60" as="geometry" />
     </mxCell>
-    <mxCell id="U4" value="결재 라인 설정" style="ellipse;" vertex="1" parent="1">
+    <mxCell id="U4" value="결재 요청" style="ellipse;" vertex="1" parent="1">
       <mxGeometry x="150" y="400" width="140" height="60" as="geometry" />
     </mxCell>
-    <mxCell id="U5" value="문서 수정" style="ellipse;" vertex="1" parent="1">
-      <mxGeometry x="150" y="500" width="120" height="60" as="geometry" />
+    <mxCell id="U5" value="결재 처리 (승인/반려/보류)" style="ellipse;" vertex="1" parent="1">
+      <mxGeometry x="150" y="500" width="160" height="60" as="geometry" />
     </mxCell>
-    <mxCell id="U6" value="결재 양식 관리" style="ellipse;" vertex="1" parent="1">
-      <mxGeometry x="150" y="600" width="140" height="60" as="geometry" />
+    <mxCell id="U6" value="문서 수정" style="ellipse;" vertex="1" parent="1">
+      <mxGeometry x="150" y="600" width="120" height="60" as="geometry" />
     </mxCell>
     <mxCell id="U7" value="알림 전송" style="ellipse;" vertex="1" parent="1">
       <mxGeometry x="150" y="700" width="120" height="60" as="geometry" />
@@ -50,13 +50,13 @@
     <!-- Connections -->
     <mxCell id="C1" edge="1" source="A1" target="U1" parent="1" />
     <mxCell id="C2" edge="1" source="A1" target="U2" parent="1" />
-    <mxCell id="C3" edge="1" source="A1" target="U4" parent="1" />
-    <mxCell id="C4" edge="1" source="A1" target="U5" parent="1" />
-    <mxCell id="C5" edge="1" source="A2" target="U3" parent="1" />
-    <mxCell id="C6" edge="1" source="A2" target="U8" parent="1" />
-    <mxCell id="C7" edge="1" source="A3" target="U6" parent="1" />
-    <mxCell id="C8" edge="1" source="A3" target="U5" parent="1" />
-    <mxCell id="C9" edge="1" source="A4" target="U3" parent="1" />
-    <mxCell id="C10" edge="1" source="A5" target="U7" parent="1" />
+    <mxCell id="C3" edge="1" source="A1" target="U3" parent="1" />
+    <mxCell id="C4" edge="1" source="A1" target="U4" parent="1" />
+    <mxCell id="C5" edge="1" source="A1" target="U6" parent="1" />
+    <mxCell id="C6" edge="1" source="A2" target="U5" parent="1" />
+    <mxCell id="C7" edge="1" source="A2" target="U8" parent="1" />
+    <mxCell id="C8" edge="1" source="A3" target="U7" parent="1" />
+    <mxCell id="C9" edge="1" source="A5" target="U7" parent="1" />
+    <mxCell id="C10" edge="1" source="A1" target="U5" parent="1" />
   </root>
 </mxGraphModel>
