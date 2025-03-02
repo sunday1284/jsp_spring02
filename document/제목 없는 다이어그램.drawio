@@ -145,16 +145,10 @@
             <mxPoint x="200" y="710" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fsTA3o1gqL7Sm_SV5eHb-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fsTA3o1gqL7Sm_SV5eHb-1" target="fsTA3o1gqL7Sm_SV5eHb-16">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="fsTA3o1gqL7Sm_SV5eHb-1" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;문서수정&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="370" y="670" width="80" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="fsTA3o1gqL7Sm_SV5eHb-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="54n4LJPjrRcseGLzzfWc-6" target="fsTA3o1gqL7Sm_SV5eHb-1">
+        <mxCell id="fsTA3o1gqL7Sm_SV5eHb-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="54n4LJPjrRcseGLzzfWc-6">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="390" y="750" as="sourcePoint" />
-            <mxPoint x="440" y="700" as="targetPoint" />
+            <mxPoint x="370" y="710" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="fsTA3o1gqL7Sm_SV5eHb-9" value="수정요청" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="fsTA3o1gqL7Sm_SV5eHb-8">
@@ -162,22 +156,28 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fsTA3o1gqL7Sm_SV5eHb-10" value="인사관리자&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="570" y="680" width="30" height="60" as="geometry" />
+        <mxCell id="6YG0qnFzWDe5KEvOB_Np-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="fsTA3o1gqL7Sm_SV5eHb-10" target="6YG0qnFzWDe5KEvOB_Np-2">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fsTA3o1gqL7Sm_SV5eHb-13" value="" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fsTA3o1gqL7Sm_SV5eHb-10" target="fsTA3o1gqL7Sm_SV5eHb-1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="750" as="sourcePoint" />
-            <mxPoint x="440" y="700" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="fsTA3o1gqL7Sm_SV5eHb-14" value="승인 후 수정" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="fsTA3o1gqL7Sm_SV5eHb-13">
-          <mxGeometry x="0.2721" y="-3" relative="1" as="geometry">
+        <mxCell id="6YG0qnFzWDe5KEvOB_Np-7" value="승인&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="6YG0qnFzWDe5KEvOB_Np-6">
+          <mxGeometry x="-0.0489" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fsTA3o1gqL7Sm_SV5eHb-16" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;결재완료&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="370" y="510" width="80" height="80" as="geometry" />
+        <mxCell id="fsTA3o1gqL7Sm_SV5eHb-10" value="인사관리자&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="380" y="680" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6YG0qnFzWDe5KEvOB_Np-2" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;제한해제&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="530" y="680" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6YG0qnFzWDe5KEvOB_Np-8" value="문서수정,삭제" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="530" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6YG0qnFzWDe5KEvOB_Np-9" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="6YG0qnFzWDe5KEvOB_Np-2" target="6YG0qnFzWDe5KEvOB_Np-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="680" as="sourcePoint" />
+            <mxPoint x="550" y="630" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
