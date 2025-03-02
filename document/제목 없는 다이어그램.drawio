@@ -1,44 +1,7 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.16">
   <diagram name="Page-1" id="0">
     <mxGraphModel dx="974" dy="428" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
-      <root>
-        <mxCell id="0" value="" style="group" vertex="1" connectable="0">
-          <mxGeometry x="0" y="0" width="827" height="1169" as="geometry"/>
-        </mxCell>
-        <mxCell id="1" value="" style="swimlane;whiteSpace=wrap;html=1" vertex="1" connectable="0">
-          <mxGeometry x="0" y="0" width="827" height="1169" as="geometry"/>
-        </mxCell>
-        <mxCell id="2" value="기안자" style="rounded;whiteSpace=wrap;html=1;fillColor=#FFDDDD;strokeColor=#CC0000" vertex="1" connectable="0">
-          <mxGeometry x="0.1" y="0.1" width="200" height="200" as="geometry"/>
-        </mxCell>
-        <mxCell id="3" value="결재자" style="rounded;whiteSpace=wrap;html=1;fillColor=#DDFFDD;strokeColor=#009900" vertex="1" connectable="0">
-          <mxGeometry x="0.1" y="0.4" width="200" height="200" as="geometry"/>
-        </mxCell>
-        <mxCell id="4" value="기안 문서 작성" style="rounded;whiteSpace=wrap;html=1;fillColor=#FFFF00" vertex="1" connectable="0">
-          <mxGeometry x="0.4" y="0.1" width="200" height="200" as="geometry"/>
-        </mxCell>
-        <mxCell id="5" value="결재 순서 설정" style="rounded;whiteSpace=wrap;html=1;fillColor=#FFFF00" vertex="1" connectable="0">
-          <mxGeometry x="0.4" y="0.4" width="200" height="200" as="geometry"/>
-        </mxCell>
-        <mxCell id="6" value="결재 문서 승인" style="rounded;whiteSpace=wrap;html=1;fillColor=#FFFF00" vertex="1" connectable="0">
-          <mxGeometry x="0.7" y="0.4" width="200" height="200" as="geometry"/>
-        </mxCell>
-        <mxCell id="7" value="문서 수정" style="rounded;whiteSpace=wrap;html=1;fillColor=#FFFF00" vertex="1" connectable="0">
-          <mxGeometry x="0.7" y="0.1" width="200" height="200" as="geometry"/>
-        </mxCell>
-        <mxCell id="8" value="기안자 수정을 요청" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.8;exitY=0.3;exitDx=0;exitDy=0" edge="1" parent="1" source="4" target="7">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-        <mxCell id="9" value="기안자가 결재자 추가" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.3;exitY=0.3;exitDx=0;exitDy=0" edge="1" parent="1" source="4" target="5">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-        <mxCell id="10" value="기안자가 결재 순서 설정" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.8;exitDx=0;exitDy=0" edge="1" parent="1" source="4" target="6">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-        <mxCell id="11" value="기안자가 결재자 지정" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.8;exitDx=0;exitDy=0" edge="1" parent="1" source="5" target="6">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-      </root>
+      <root />
     </mxGraphModel>
   </diagram>
 </mxfile>
