@@ -86,6 +86,8 @@ public class RootContextJavaConfig {
 		DataSource dataSource 
 		, @Value("classpath:kr/or/ddit/mybatis/Configuration.xml") Resource configLocation
 		, @Value("classpath:kr/or/ddit/mybatis/mappers/*.xml") Resource...mapperLocations //가변형 파라미터
+		//최프용 구조 
+//		, @Value("classpath:kr/or/ddit/mybatis/mappers/*/*/*.xml") Resource...mapperLocations //가변형 파라미터
 			) {
 		//SqlSessionFactoryFactoryBean
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
