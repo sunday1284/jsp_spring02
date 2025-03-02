@@ -1,7 +1,48 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.16">
   <diagram name="Page-1" id="0">
     <mxGraphModel dx="974" dy="428" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
-      <root />
+      <root>
+        <!-- 기안자 역할 -->
+        <mxCell id="1" value="기안자" style="actor;whiteSpace=wrap;html=1;fillColor=#FFDDDD;strokeColor=#CC0000" vertex="1" connectable="0">
+          <mxGeometry x="0.1" y="0.1" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <!-- 결재자 역할 -->
+        <mxCell id="2" value="결재자" style="actor;whiteSpace=wrap;html=1;fillColor=#DDFFDD;strokeColor=#009900" vertex="1" connectable="0">
+          <mxGeometry x="0.1" y="0.3" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <!-- 유스케이스: 기안 문서 작성 -->
+        <mxCell id="3" value="기안 문서 작성" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#000000" vertex="1" connectable="0">
+          <mxGeometry x="0.4" y="0.1" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <!-- 유스케이스: 결재 순서 설정 -->
+        <mxCell id="4" value="결재 순서 설정" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#000000" vertex="1" connectable="0">
+          <mxGeometry x="0.4" y="0.3" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <!-- 유스케이스: 결재 문서 승인 -->
+        <mxCell id="5" value="결재 문서 승인" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#000000" vertex="1" connectable="0">
+          <mxGeometry x="0.7" y="0.3" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <!-- 유스케이스: 문서 수정 -->
+        <mxCell id="6" value="문서 수정" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#000000" vertex="1" connectable="0">
+          <mxGeometry x="0.7" y="0.1" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <!-- 기안자와 기안 문서 작성 연결 -->
+        <mxCell id="7" value="기안자 작성" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="1" target="3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- 기안자와 결재 순서 설정 연결 -->
+        <mxCell id="8" value="기안자 설정" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="1" target="4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- 결재자와 결재 문서 승인 연결 -->
+        <mxCell id="9" value="결재자 승인" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="2" target="5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- 결재자와 문서 수정 연결 -->
+        <mxCell id="10" value="결재자 수정" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="2" target="6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
     </mxGraphModel>
   </diagram>
 </mxfile>
