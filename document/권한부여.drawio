@@ -7,13 +7,10 @@
         <mxCell id="_zgztB828BG1MX7Zuyi1-1" value="마스터" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="550" y="510" width="50" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="_zgztB828BG1MX7Zuyi1-2" value="인사관리자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+        <mxCell id="_zgztB828BG1MX7Zuyi1-2" value="인사담당자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="374" y="925" width="40" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="_zgztB828BG1MX7Zuyi1-3" value="결재자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
-          <mxGeometry x="550" y="925" width="40" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="_zgztB828BG1MX7Zuyi1-4" value="기안자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+        <mxCell id="_zgztB828BG1MX7Zuyi1-4" value="직원" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="710" y="920" width="40" height="90" as="geometry" />
         </mxCell>
         <mxCell id="_S4eydJjEhaC2JPIOoyc-6" value="직급" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -114,12 +111,6 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="400" y="920" as="sourcePoint" />
             <mxPoint x="450" y="870" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="_S4eydJjEhaC2JPIOoyc-49" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="_zgztB828BG1MX7Zuyi1-3" target="_S4eydJjEhaC2JPIOoyc-23">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="410" y="1000" as="sourcePoint" />
-            <mxPoint x="460" y="950" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="_S4eydJjEhaC2JPIOoyc-50" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="_zgztB828BG1MX7Zuyi1-4" target="_S4eydJjEhaC2JPIOoyc-23">
