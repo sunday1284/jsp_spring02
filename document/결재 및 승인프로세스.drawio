@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.16">
   <diagram name="결재 및 승인 프로세스" id="0">
-    <mxGraphModel dx="734" dy="428" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="974" dy="428" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -8,13 +8,10 @@
           <mxGeometry x="50" y="200" width="50" height="80" as="geometry" />
         </mxCell>
         <mxCell id="usecase1" value="결재 진행" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="290" y="100" width="120" height="60" as="geometry" />
+          <mxGeometry x="270" y="100" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="usecase2" value="승인/반려/보류" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="294" y="210" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="usecase3" value="대결자 지정" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="250" y="300" width="120" height="60" as="geometry" />
+          <mxGeometry x="280" y="210" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="edge1" parent="1" source="actor1" target="usecase1" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -22,13 +19,18 @@
         <mxCell id="edge2" parent="1" source="actor1" target="usecase2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge3" style="fillColor=#f8cecc;strokeColor=#b85450;" parent="1" source="actor1" target="usecase3" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="edge3" style="fillColor=#f8cecc;strokeColor=#b85450;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="actor1" target="4OT903SSjuC8Yj3QUAag-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="262.36731123990285" y="311.75769366634574" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="4OT903SSjuC8Yj3QUAag-1" value="보류시" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge3">
           <mxGeometry x="0.1255" y="4" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="4OT903SSjuC8Yj3QUAag-2" value="대결자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="290" y="290" width="60" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
