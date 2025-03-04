@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
 /**
  * 구시대
  */
@@ -78,35 +77,6 @@ public class Lab5AsIs {
 		lab5AsIs.launch();
 		
 		System.out.println("99. 프로그램 종료");
-=======
-public class Lab5AsIs {
-
-	public static void main(String[] args) {
-
-		List<String> lines = new ArrayList<String>();
-
-		for (int i = 0; i < 10; i++) {
-			lines.add("홍길동" + (i + 1));
-		}
-
-		File file = new File("c:/ddit/simple.txt");
-		BufferedWriter write = null;
-		try {
-			write = new BufferedWriter(new FileWriter(file));
-			for (String line : lines) {
-				write.write(line);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (write != null) {
-				try {
-					write.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
->>>>>>> branch 'main' of https://github.com/sunday1284/jsp_spring02.git
 	}
 }
+
