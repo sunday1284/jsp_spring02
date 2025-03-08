@@ -1,7 +1,5 @@
 package kr.or.ddit.lab;
 
-import org.springframework.beans.BeanUtils;
-
 import lombok.Data;
 
 @Data
