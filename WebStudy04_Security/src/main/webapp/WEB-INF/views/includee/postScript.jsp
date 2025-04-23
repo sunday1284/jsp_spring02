@@ -16,4 +16,3 @@
   <!-- Template Main JS File -->
   <script src="${pageContext.request.contextPath}/resources/NiceAdmin/assets/js/main.js"></script>	
   
-  
