@@ -19,7 +19,7 @@ public class Event {
 	@Id // PK
 	@GeneratedValue //시퀀스 , mysql -> 오토인크리던스(identity) , 신경 x -> auto
 	private Long id;
-	private String title;
+	private String title; // Char 타입이면 수동 매핑
 	@Column(name = "EVENTDATE")
 	private LocalDateTime date;
 	

@@ -37,48 +37,29 @@ class JpaSessionTest {
 			StandardServiceRegistryBuilder.destroy(registry);
 		}
 	}
-//	@Test
+	@Test
 	void testPersist() {
 		// create a couple of events...
 		sessionFactory.inTransaction(session -> {
-			session.persist(new Event("Our very first event!", now()));
-			session.persist(new Event("A follow up event", now()));
+			Event event1 = new Event("Our very first event!", now()); //트랜지헌트 상태 
+			session.persist(event1);
+			event1.setTitle("수정제목1");
+			Event event2 = new Event("A follow up event", now());
+			session.persist(event2);
+			//detach 다시 빼냄
+//			session.detach(event2);
+			event2.setTitle("수정제목2");
 		});
 	}
 	
-//	@Test
+	@Test
 	void testRead() {
 		// now lets pull events from the database and list them
-		sessionFactory.inTransaction(session -> {
-			session.createSelectionQuery("from Event", Event.class).getResultList()
+		sessionFactory.inSession(session -> { // 트랜잭션 없는 상태에서 쿼리 실행
+			session.createSelectionQuery("from Event", Event.class).getResultList() // jpql 
 					.forEach(event -> out.println("Event (" + event.getDate() + ") : " + event.getTitle()));
 		});
 	}
 	
-//	@Test
-    void testUpdate() {
-        sessionFactory.inTransaction(session -> {
-            // 가장 첫 번째 이벤트 조회
-            Event event = session.createSelectionQuery("from Event", Event.class)
-                                 .setMaxResults(1)
-                                 .getSingleResult();
-            out.println("Before update: " + event.getTitle());
-            // 제목 변경
-            event.setTitle("Updated Title");
-            // 트랜잭션 커밋 시점에 변경사항이 자동 flush 되어 반영됩니다
-        });
-    }
-
-   @Test
-    void testDelete() {
-        sessionFactory.inTransaction(session -> {
-            // 가장 첫 번째 이벤트 조회
-            Event event = session.createSelectionQuery("from Event", Event.class)
-                                 .setMaxResults(1)
-                                 .getSingleResult();
-            out.println("Deleting event: " + event.getTitle());
-            session.remove(event);
-        });
-    }
 
 }
