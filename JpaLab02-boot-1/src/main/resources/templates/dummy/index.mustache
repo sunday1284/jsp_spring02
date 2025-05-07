@@ -1,0 +1,31 @@
+<html>
+<body>
+<h1>머스테치 웰컴페이지, Logic-less 템플릿 엔진</h1>
+{{# dummy }} 
+	{{dummy}}
+{{/ dummy }}
+{{^ dummy }}
+	모델이 없음.
+{{/ dummy }}
+<hr />
+<ul>
+{{# dummyList}}
+	<li>{{.}}</li>
+{{/ dummyList}}
+</ul>
+<hr />
+<table>
+	{{# voList}}
+		<tr>
+			<td>{{name}}</td>
+			<td>{{age}}</td>
+		</tr>
+	{{/ voList}}
+	{{^ voList}}
+		<tr>
+			<td colspan="2">데이터 없음.</td>
+		</tr>
+	{{/ voList}}
+</table>
+</body>
+</html>

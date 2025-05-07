@@ -1,0 +1,30 @@
+{{< layout }}
+{{$ main }}  
+    <h1 class="mb-4">Customer List</h1>
+    <a href="./create">신규 등록</a>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{# customerList }}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{firstName}}</td>
+                    <td>{{lastName}}</td>
+                </tr>
+            {{/ customerList }}
+
+            {{^ customerList }}
+                <tr>
+                    <td colspan="3" class="text-center">고객정보가 없습니다.</td>
+                </tr>
+            {{/ customerList }}
+        </tbody>
+    </table>
+{{/ main }}
+{{/ layout }}
